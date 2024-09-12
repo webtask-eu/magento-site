@@ -114,30 +114,21 @@ class SearchFilterPlugin
     {
 
         $params = [
-        'index' => 'magento2_product_1_v3',
-        'body'  => [
-            'query' => [
-                'wildcard' => [
-                    '$params = [
-                        'index' => 'magento2_product_1_v3',
-                        'body'  => [
-                            'query' => [
-                                'bool' => [
-                                    'should' => [
-                                        [ 'wildcard' => [ 'sku' => '*' . $searchQuery . '*' ] ],
-                                        [ 'wildcard' => [ 'name' => '*' . $searchQuery . '*' ] ],
-                                        [ 'wildcard' => [ 'meta_title' => '*' . $searchQuery . '*' ] ],
-                                        [ 'wildcard' => [ 'meta_keyword' => '*' . $searchQuery . '*' ] ]
-                                    ]
-                                ]
-                            ]
+            'index' => 'magento2_product_1_v3',
+            'body'  => [
+                'query' => [
+                    'bool' => [
+                        'should' => [
+                            [ 'wildcard' => [ 'sku' => '*' . $searchQuery . '*' ] ],
+                            [ 'wildcard' => [ 'name' => '*' . $searchQuery . '*' ] ],
+                            [ 'wildcard' => [ 'meta_title' => '*' . $searchQuery . '*' ] ],
+                            [ 'wildcard' => [ 'meta_keyword' => '*' . $searchQuery . '*' ] ]
                         ]
-                    ];
-                    ' => '*' . $searchQuery . '*' // Добавление wildcard для поиска по части строки
+                    ]
                 ]
             ]
-        ]
-    ];
+        ];
+        
 
 		
         try {
