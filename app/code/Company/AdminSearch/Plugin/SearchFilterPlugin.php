@@ -118,7 +118,22 @@ class SearchFilterPlugin
         'body'  => [
             'query' => [
                 'wildcard' => [
-                    'sku' => '*' . $searchQuery . '*' // Добавление wildcard для поиска по части строки
+                    '$params = [
+                        'index' => 'magento2_product_1_v3',
+                        'body'  => [
+                            'query' => [
+                                'bool' => [
+                                    'should' => [
+                                        [ 'wildcard' => [ 'sku' => '*' . $searchQuery . '*' ] ],
+                                        [ 'wildcard' => [ 'name' => '*' . $searchQuery . '*' ] ],
+                                        [ 'wildcard' => [ 'meta_title' => '*' . $searchQuery . '*' ] ],
+                                        [ 'wildcard' => [ 'meta_keyword' => '*' . $searchQuery . '*' ] ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ];
+                    ' => '*' . $searchQuery . '*' // Добавление wildcard для поиска по части строки
                 ]
             ]
         ]
