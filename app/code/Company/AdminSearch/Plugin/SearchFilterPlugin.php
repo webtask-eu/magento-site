@@ -121,8 +121,8 @@ class SearchFilterPlugin
                         'should' => [
                             [ 'wildcard' => [ 'sku' => '*' . $searchQuery . '*' ] ],
                             [ 'wildcard' => [ 'name' => '*' . $searchQuery . '*' ] ],
-                            [ 'wildcard' => [ 'meta_title' => '*' . $searchQuery . '*' ] ],
-                            [ 'wildcard' => [ 'meta_keyword' => '*' . $searchQuery . '*' ] ]
+                            [ 'wildcard' => [ 'manufacturer_value' => '*' . $searchQuery . '*' ] ],
+                            [ 'wildcard' => [ 'supplier_value' => '*' . $searchQuery . '*' ] ]
                         ]
                     ]
                 ]
