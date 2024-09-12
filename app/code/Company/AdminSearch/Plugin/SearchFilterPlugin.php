@@ -112,7 +112,7 @@ class SearchFilterPlugin
     // Получение продуктов из Elasticsearch
     private function getProductsFromElasticsearch($searchQuery)
     {
-
+        // параметры для поиска по Elasticsearch 7
         $params = [
             'index' => 'magento2_product_1_v3',
             'body'  => [
