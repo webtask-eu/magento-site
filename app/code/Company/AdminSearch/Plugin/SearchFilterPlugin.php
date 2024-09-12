@@ -114,15 +114,17 @@ class SearchFilterPlugin
     {
 
         $params = [
-        'index' => 'magento2_product_1_v3',
-        'body'  => [
-            'query' => [
-                'wildcard' => [
-                    'sku' => '*' . $searchQuery . '*' // Добавление wildcard для поиска по части строки
+            'index' => 'magento2_product_1_v3',
+            'body'  => [
+                'query' => [
+                    'multi_match' => [
+                        'query'  => '*' . $searchQuery . '*',
+                        'fields' => ['sku', 'name', 'meta_title', 'meta_keyword']
+                    ]
                 ]
             ]
-        ]
-    ];
+        ];
+        
 
 		
         try {
