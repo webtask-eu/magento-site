@@ -118,7 +118,7 @@ class SearchFilterPlugin
         'body'  => [
             'query' => [
                 'wildcard' => [
-                    'sku' => $searchQuery . '*' // Добавление wildcard для поиска по части строки
+                    'sku' => '*' . $searchQuery . '*' // Добавление wildcard для поиска по части строки
                 ]
             ]
         ]
