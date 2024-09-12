@@ -118,12 +118,14 @@ class SearchFilterPlugin
             'body'  => [
                 'query' => [
                     'multi_match' => [
-                        'query'  => '*' . $searchQuery . '*',
-                        'fields' => ['sku', 'name', 'meta_title', 'meta_keyword']
+                        'query'  => $searchQuery,
+                        'fields' => ['sku', 'name', 'meta_title', 'meta_keywords'],
+                        'type'   => 'best_fields' // или 'most_fields'
                     ]
                 ]
             ]
         ];
+        
         
 
 		
