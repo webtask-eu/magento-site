@@ -1,0 +1,10 @@
+<?php /** * @author Hexamarvel Team * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com) * @package Hexamarvel_Blog */ /** @var \Hexamarvel\Blog\Block\Adminhtml\Posts\Edit\RelatedProducts $block */ /** @var \Magento\Catalog\Block\Adminhtml\Category\Tab\Product $blockGrid */ $blockGrid = $block->getBlockGrid(); $gridJsObjectName = $blockGrid->getJsObjectName(); ?> <?= $block->getGridHtml(); ?> <input type="hidden" id="in_related_products" name="related_products" data-form-part="hexablog_post_form" value="" /><script type="text/x-magento-init">
+    {
+        "*": {
+            "Hexamarvel_Blog/js/product/grid/assign-products": {
+                "selectedProducts": <?= /* @noEscape */ $block->getProductsJson(); ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }</script><!-- @todo remove when "UI components" will support such initialization --><script>
+    require('mage/apply/main').apply();</script>

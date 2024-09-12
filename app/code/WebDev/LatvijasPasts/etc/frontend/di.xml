@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="checkout_config_circle_k_data" xsi:type="object">
+                    WebDev\LatvijasPasts\Model\Resource\CircleKDusConfigProvider
+                </item>
+            </argument>
+            <argument name="configProviders" xsi:type="array">
+                <item name="checkout_config_locker_data" xsi:type="object">
+                    WebDev\LatvijasPasts\Model\Resource\LockerConfigProvider
+                </item>
+            </argument>
+            <argument name="configProviders" xsi:type="array">
+                <item name="checkout_config_locker_lithuania_data" xsi:type="object">
+                    WebDev\LatvijasPasts\Model\Resource\LockerLithuaniaConfigProvider
+                </item>
+            </argument>
+            <argument name="configProviders" xsi:type="array">
+                <item name="checkout_config_post_office_data" xsi:type="object">
+                    WebDev\LatvijasPasts\Model\Resource\PostOfficeConfigProvider
+                </item>
+            </argument>
+            <argument name="configProviders" xsi:type="array">
+                <item name="checkout_config_post_office_lithuania_data" xsi:type="object">
+                    WebDev\LatvijasPasts\Model\Resource\PostOfficeLithuaniaConfigProvider
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

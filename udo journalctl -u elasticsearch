@@ -1,0 +1,226 @@
+-- Logs begin at Sun 2024-07-21 18:53:05 UTC, end at Tue 2024-08-27 18:02:59 UTC. --
+Jul 21 18:53:11 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Jul 21 18:53:22 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[910]: Jul 21, 2024 6:53:22 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Jul 21 18:53:22 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[910]: WARNING: COMPAT locale provider will be removed in a future release
+Jul 21 18:53:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Jul 21 19:05:00 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Jul 21 19:05:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Jul 21 19:05:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Jul 21 19:05:40 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Jul 21 19:05:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[923]: Jul 21, 2024 7:05:50 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Jul 21 19:05:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[923]: WARNING: COMPAT locale provider will be removed in a future release
+Jul 21 19:06:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Jul 21 19:40:56 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Jul 21 19:40:57 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Jul 21 19:40:57 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Jul 21 19:41:32 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Jul 21 19:41:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[924]: Jul 21, 2024 7:41:42 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Jul 21 19:41:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[924]: WARNING: COMPAT locale provider will be removed in a future release
+Jul 21 19:42:03 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Jul 21 20:02:11 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Jul 21 20:02:13 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Jul 21 20:02:13 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Jul 21 20:03:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Jul 21 20:03:26 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[917]: Jul 21, 2024 8:03:26 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Jul 21 20:03:26 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[917]: WARNING: COMPAT locale provider will be removed in a future release
+Jul 21 20:03:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Jul 29 13:38:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Jul 29 13:38:43 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Jul 29 13:38:43 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Jul 29 15:14:18 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Jul 29 15:14:32 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[826]: Jul 29, 2024 3:14:32 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Jul 29 15:14:32 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[826]: WARNING: COMPAT locale provider will be removed in a future release
+Jul 29 15:14:53 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 08:00:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 08:00:16 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 08:00:16 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 08:03:40 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 08:03:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: Aug 02, 2024 8:03:51 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 08:03:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 08:04:08 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 08:07:55 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 08:07:56 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 08:07:56 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 08:17:04 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 08:17:20 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[831]: Aug 02, 2024 8:17:20 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 08:17:20 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[831]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 08:17:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 17:32:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 17:32:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 17:32:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 17:37:12 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 17:37:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[913]: Aug 02, 2024 5:37:21 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 17:37:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[913]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 17:37:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 17:38:19 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 17:38:20 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 17:38:20 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 17:44:20 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 17:44:30 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[900]: Aug 02, 2024 5:44:30 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 17:44:30 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[900]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 17:44:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 19:26:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 19:26:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 19:26:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 19:29:31 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 19:29:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[866]: Aug 02, 2024 7:29:41 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 19:29:42 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[866]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 19:29:59 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 20:29:30 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 20:29:31 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 20:29:31 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 20:38:31 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 20:38:40 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[910]: Aug 02, 2024 8:38:40 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 20:38:40 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[910]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 20:38:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 02 21:11:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 02 21:11:26 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 02 21:11:26 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 02 21:13:00 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 02 21:13:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[915]: Aug 02, 2024 9:13:10 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 02 21:13:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[915]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 02 21:13:21 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 03 16:54:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 03 16:54:52 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 03 16:54:52 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 03 17:02:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 03 17:03:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[907]: Aug 03, 2024 5:03:01 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 03 17:03:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[907]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 03 17:03:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 04 14:45:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 04 14:45:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 04 14:45:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 04 14:53:40 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 04 14:53:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[898]: Aug 04, 2024 2:53:50 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 04 14:53:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[898]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 04 14:54:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 04 14:59:32 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 04 14:59:33 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 04 14:59:33 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 04 15:00:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 04 15:00:47 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[906]: Aug 04, 2024 3:00:47 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 04 15:00:47 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[906]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 04 15:00:59 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 04 19:43:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 04 19:43:52 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 04 19:43:52 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 04 19:47:26 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 04 19:47:36 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[863]: Aug 04, 2024 7:47:36 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 04 19:47:36 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[863]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 04 19:47:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 06 15:55:52 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 06 15:55:54 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 06 15:55:54 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 06 15:58:41 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 06 15:58:48 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[848]: Aug 06, 2024 3:58:48 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 06 15:58:48 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[848]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 06 15:59:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 06 18:46:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 06 18:46:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 06 18:46:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 06 18:49:07 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 06 18:49:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: Aug 06, 2024 6:49:15 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 06 18:49:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 06 18:49:29 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 07 11:15:03 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 07 11:15:04 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 07 11:15:04 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 07 11:19:08 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 07 11:19:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[855]: Aug 07, 2024 11:19:15 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 07 11:19:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[855]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 07 11:19:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 08 12:26:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 08 12:26:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 08 12:26:10 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 08 12:41:27 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 08 12:41:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[859]: Aug 08, 2024 12:41:37 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 08 12:41:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[859]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 08 12:41:49 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 08 17:58:13 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 08 17:58:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 08 17:58:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 08 18:02:43 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 08 18:02:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: Aug 08, 2024 6:02:51 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 08 18:02:51 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 08 18:03:02 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 09 07:12:23 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 09 07:12:24 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 09 07:12:24 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 09 07:14:04 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 09 07:14:12 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: Aug 09, 2024 7:14:12 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 09 07:14:12 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 09 07:14:24 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 12 12:41:14 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 12 12:41:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 12 12:41:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 12 12:42:06 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 12 12:42:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[859]: Aug 12, 2024 12:42:15 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 12 12:42:15 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[859]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 12 12:42:27 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 13 09:09:36 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 13 09:09:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 13 09:09:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 13 09:10:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 13 09:10:33 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: Aug 13, 2024 9:10:33 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 13 09:10:33 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[857]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 13 09:10:45 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 14 19:37:28 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 14 19:37:28 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 14 19:37:28 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 14 19:45:46 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 14 19:45:55 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: Aug 14, 2024 7:45:55 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 14 19:45:55 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[856]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 14 19:46:09 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 14 21:05:17 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 14 21:05:17 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 14 21:05:17 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 14 21:06:18 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 14 21:06:27 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[852]: Aug 14, 2024 9:06:27 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 14 21:06:27 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[852]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 14 21:06:41 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 19 08:26:01 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopping Elasticsearch...
+Aug 19 08:26:02 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: elasticsearch.service: Succeeded.
+Aug 19 08:26:02 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Stopped Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 19 08:27:29 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 19 08:27:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[853]: Aug 19, 2024 8:27:37 AM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 19 08:27:37 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[853]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 19 08:27:50 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+[0;1;39m-- Reboot --[0m
+Aug 24 12:52:49 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 24 12:52:57 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[848]: Aug 24, 2024 12:52:57 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 24 12:52:57 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[848]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 24 12:53:09 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 27 17:32:06 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185melasticsearch.service: Main process exited, code=killed, status=9/KILL[0m
+Aug 27 17:32:06 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185melasticsearch.service: Failed with result 'signal'.[0m
+Aug 27 17:37:25 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Starting Elasticsearch...
+Aug 27 17:37:34 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[143142]: Aug 27, 2024 5:37:34 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+Aug 27 17:37:34 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd-entrypoint[143142]: WARNING: COMPAT locale provider will be removed in a future release
+Aug 27 17:37:53 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: Started Elasticsearch.
+Aug 27 17:59:07 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185melasticsearch.service: Main process exited, code=killed, status=9/KILL[0m
+Aug 27 17:59:07 magento2opensource165onubuntu2004lts-s-2vcpu-8gb-160gb-intel-fra systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185melasticsearch.service: Failed with result 'signal'.[0m

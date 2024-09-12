@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WebDev_LatvijasPasts::express_manifest"
+             title="ExpressPasts Manifest"
+             parent="Magento_Sales::sales_operation"
+             module="WebDev_LatvijasPasts"
+             action="latvijaspasts/manifest/expresspasts"
+             sortOrder="100"
+             resource="Magento_Sales::mansPasts"/>
+        <add id="WebDev_LatvijasPasts::mans_manifest"
+             title="MansPasts Manifest"
+             parent="Magento_Sales::sales_operation"
+             module="WebDev_LatvijasPasts"
+             action="latvijaspasts/manifest/manspasts"
+             sortOrder="101"
+             resource="Magento_Sales::sales_operation"/>
+        <add id="WebDev_LatvijasPasts::courier"
+             title="LatvijasPasts Courier"
+             parent="Magento_Sales::sales_operation"
+             module="WebDev_LatvijasPasts"
+             action="latvijaspasts/courier/index"
+             sortOrder="102"
+             resource="Magento_Sales::sales_operation"/>
+    </menu>
+</config>

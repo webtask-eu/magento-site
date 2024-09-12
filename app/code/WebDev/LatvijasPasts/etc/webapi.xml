@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/latvijaspasts/get-circle-k-dus-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\CircleKDusManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-lockers-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\LockerManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-lockers-lithuania-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\LockerLithuaniaManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-post-office-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\PostOfficeManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-post-office-lithuania-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\PostOfficeLithuaniaManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-express-country-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\CountryManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/latvijaspasts/get-usa-state-list" method="GET">
+        <service class="WebDev\LatvijasPasts\Api\UsaStateManagementInterface" method="fetch"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

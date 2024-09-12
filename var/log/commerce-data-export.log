@@ -1,0 +1,3 @@
+[2024-09-11T18:30:09.906271+00:00] main.INFO: {"feed":"undefined","operation":"undefined","status":"Setting mode Update On Schedule for indexer Sales Order Feed","elapsed":"367 ms","pid":"120506","caller":"bin\/magento setup:upgrade"} [] []
+[2024-09-11T18:30:09.917046+00:00] main.INFO: {"feed":"undefined","operation":"undefined","status":"Setting mode Update On Schedule for indexer Sales Order Statuses Feed","elapsed":"378 ms","pid":"120506","caller":"bin\/magento setup:upgrade"} [] []
+[2024-09-11T18:30:09.932457+00:00] main.INFO: {"feed":"undefined","operation":"undefined","status":"Setting mode Update On Schedule for indexer Stores Feed","elapsed":"394 ms","pid":"120506","caller":"bin\/magento setup:upgrade"} [] []

@@ -1,0 +1,377 @@
+<?php
+/** @var \WebDev\LatvijasPasts\Model\Template\CourierTemplate $this */
+?>
+<form id="courier-form" action="<?= $this->getUrl('latvijaspasts/courier/call') ?>" method="GET">
+    <div class="fieldset-wrapper">
+        <fieldset class="admin__fieldset">
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="when">
+                        <span><?= __('Date') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="when" class="admin__control-text" name="when" type="text"/>
+                </div>
+            </div>
+
+            <fieldset class="admin__field">
+                <legend class="admin__field-label">
+                    <span></span>
+                </legend>
+                <div class="admin__field-control admin__control-grouped-date admin__control-grouped">
+                    <div class="admin__field admin__field-date _required">
+                        <div class="admin__field-label">
+                            <label for="time_from">
+                                <span><?= __('Time') ?></span>
+                            </label>
+                        </div>
+                        <div class="admin__field-control">
+                            <input id="time_from" class="admin__control-text" name="time_from" type="time">
+                        </div>
+                    </div>
+                    <div class="admin__field admin__field-date">
+                        <div class="admin__field-label">
+                            <label for="time_to">
+                                <span><?= __('To') ?></span>
+                            </label>
+                        </div>
+                        <div class="admin__field-control">
+                            <input id="time_to" class="admin__control-text" name="time_to" type="time">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="transport_type">
+                        <span><?= __('Transport type') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <select class="admin__control-select" id="transport_type" name="transport_type">
+                        <option value="1"><?= __('Bus') ?></option>
+                        <option value="2"><?= __('Truck') ?></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="parcel_strids"><?= __('Parcel numbers') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="parcel_strids"
+                           class="input-text admin__control-text"
+                           name="parcel_strids"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="manifest"><?= __('Manifest') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="manifest"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="manifest"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field admin__field-small">
+                <div class="admin__field-label">
+                    <label for="weight"><?= __('Weight') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="admin__control-addon">
+                        <input id="weight"
+                               class="maximum-length-255 validate-length input-text admin__control-text"
+                               name="weight"
+                               type="text">
+                        <label class="admin__addon-suffix" for="weight">
+                            <span>kg</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin__field admin__field-small">
+                <div class="admin__field-label">
+                    <label for="cbm"><?= __('Volume') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="admin__control-addon">
+                        <input id="cbm"
+                               class="maximum-length-255 validate-length input-text admin__control-text"
+                               name="cbm"
+                               type="text">
+                        <label class="admin__addon-suffix" for="cbm">
+                            <span>m³</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin__field admin__field-small">
+                <div class="admin__field-label">
+                    <label for="ldm"><?= __('Loading area length') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="admin__control-addon">
+                        <input id="ldm"
+                               class="maximum-length-255 validate-length input-text admin__control-text"
+                               name="ldm"
+                               type="text">
+                        <label class="admin__addon-suffix" for="ldm">
+                            <span>m</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="company_name">
+                        <span><?= __('Company name or') ?><br><?= __(' name and surname') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="company_name"
+                           class="required-entry maximum-length-255 minimum-length-1 validate-length input-text admin__control-text required-entry"
+                           name="company_name"
+                           type="text"
+                           value="<?= $this->getStoreName() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="phone">
+                        <span><?= __('Phone number') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="phone"
+                           class="required-entry maximum-length-255 minimum-length-1 validate-length input-text admin__control-text required-entry"
+                           name="phone"
+                           type="text"
+                           value="<?= $this->getStorePhone() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="email"><?= __('Email') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="email"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="email"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="city">
+                        <span><?= __('City') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="city"
+                           class="required-entry maximum-length-255 minimum-length-1 validate-length input-text admin__control-text required-entry"
+                           name="city"
+                           type="text"
+                           value="<?= $this->getCity() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="area">
+                        <span><?= __('Area') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="area"
+                           class="required-entry maximum-length-255 minimum-length-1 validate-length input-text admin__control-text required-entry"
+                           name="area"
+                           type="text"
+                           value="<?= $this->getRegion() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="district"><?= __('District') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="district"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="district"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="village"><?= __('Village') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="village"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="village"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="street"><?= __('Street') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="street"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="street"
+                           type="text"
+                           value="<?= $this->getStreet() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="house"><?= __('House') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="house"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="house"
+                           type="text"
+                           value="<?= $this->getHouse() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="apartment_nr"><?= __('Apartment number') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="apartment_nr"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="apartment_nr"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="admin__field _required">
+                <div class="admin__field-label">
+                    <label for="zipcode">
+                        <span><?= __('Zipcode') ?></span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="zipcode"
+                           class="required-entry maximum-length-255 minimum-length-1 validate-length input-text admin__control-text required-entry"
+                           name="zipcode"
+                           type="text"
+                           value="<?= $this->getZipcode() ?>">
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="admin__field-label">
+                    <label for="comments"><?= __('Comments') ?></label>
+                </div>
+                <div class="admin__field-control">
+                    <input id="comments"
+                           class="maximum-length-255 validate-length input-text admin__control-text"
+                           name="comments"
+                           type="text"
+                           value="<?= $this->getComments() ?>">
+                </div>
+            </div>
+
+            <button id="call-courier" type="submit"><?= __('Call Courier') ?></button>
+            <br><br>
+            <div class="admin__field-error hidden" id="response-content"></div>
+
+        </fieldset>
+    </div>
+</form>
+
+<script>
+    require([
+        'jquery',
+        'mage/calendar'
+    ], function ($) {
+        $("#when").calendar({
+            hideIfNoPrevNext: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            showOn: 'both',
+            dateFormat: 'yyyy-mm-dd'
+        });
+    });
+
+    require([
+            'jquery',
+        ], function ($) {
+            var responseContent = $('#response-content');
+
+            $("#courier-form").submit(function (event) {
+                responseContent.addClass('hidden');
+                responseContent.html('');
+
+                var formData = {
+                    when: $('#when').val(),
+                    time_from: $('#time_from').val(),
+                    time_to: $('#time_to').val(),
+                    transport_type: $('#transport_type').val(),
+                    parcel_strids: $('#parcel_strids').val(),
+                    manifest: $('#manifest').val(),
+                    cbm: $('#cbm').val(),
+                    ldm: $('#ldm').val(),
+                    weight: $('#weight').val(),
+                    company_name: $('#company_name').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    comments: $('#comments').val(),
+                    city: $('#city').val(),
+                    area: $('#area').val(),
+                    district: $('#district').val(),
+                    village: $('#village').val(),
+                    street: $('#street').val(),
+                    house: $('#house').val(),
+                    apartment_nr: $('#apartment_nr').val(),
+                    zipcode: $('#zipcode').val(),
+                }
+
+                for (var property in formData) {
+                    if (formData[property] === null || formData[property] === undefined || formData[property] === '') {
+                        delete formData[property];
+                    }
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: "<?= $this->getUrl('latvijaspasts/courier/call')?>",
+                    data: formData,
+                }).done(function (data) {
+                    responseContent.removeClass('hidden');
+                    responseContent.html(String(data));
+                    if (data === '<?= __('Courier call successful!') ?>') {
+                        responseContent.css('border-color', 'green');
+                    } else {
+                        responseContent.css('border-color', 'red');
+                    }
+                });
+                event.preventDefault();
+            });
+        }
+    );
+</script>

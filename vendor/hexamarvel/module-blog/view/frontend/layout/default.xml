@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_Blog
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="header.links">
+			<block class="Hexamarvel\Blog\Block\HeaderLink" name="add-new-header-link" ifconfig="hexablog/general/enable">
+				<arguments>
+					<argument name="label" xsi:type="helper" helper="Hexamarvel\Blog\Helper\Data::getHeaderLabel"></argument>
+					<argument name="path" xsi:type="helper" helper="Hexamarvel\Blog\Helper\Data::getModuleRoute"></argument>
+					<argument name="is_enabled" xsi:type="helper" helper="Hexamarvel\Blog\Helper\Data::isHeaderLinkEnabled"></argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+	</body>
+</page>

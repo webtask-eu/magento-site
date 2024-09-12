@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="WebDev\LatvijasPasts\Api\CircleKDusManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\CircleKDusManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\CircleKDusInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\CircleKDus"/>
+
+    <preference for="WebDev\LatvijasPasts\Api\LockerManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\LockerManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\LockerInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\Locker"/>
+    <preference for="WebDev\LatvijasPasts\Api\LockerLithuaniaManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\LockerLithuaniaManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\LockerLithuaniaInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\LockerLithuania"/>
+
+    <preference for="WebDev\LatvijasPasts\Api\PostOfficeManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\PostOfficeManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\PostOfficeInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\PostOffice"/>
+    <preference for="WebDev\LatvijasPasts\Api\PostOfficeLithuaniaManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\PostOfficeLithuaniaManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\PostOfficeLithuaniaInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\PostOfficeLithuania"/>
+
+    <preference for="WebDev\LatvijasPasts\Api\CountryManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\CountryManagement"/>
+    <preference for="WebDev\LatvijasPasts\Api\Data\CountryInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\Country"/>
+    <preference for="WebDev\LatvijasPasts\Api\UsaStateManagementInterface"
+                type="WebDev\LatvijasPasts\Model\Resource\UsaStateManagement"/>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="latvijaspasts_update_locations" xsi:type="object">
+                    WebDev\LatvijasPasts\Console\Command\UpdateLocations
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="WebDev\LatvijasPasts\Model\ExpressPastsParcelCreate">
+        <arguments>
+            <argument name="carrier" xsi:type="object">WebDev\LatvijasPasts\Model\Carrier\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="WebDev\LatvijasPasts\Model\MansPastsParcelCreate">
+        <arguments>
+            <argument name="carrier" xsi:type="object">WebDev\LatvijasPasts\Model\Carrier\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="latvijaspasts-address" type="WebDev\LatvijasPasts\Plugin\Quote\Model\Quote\AddressPlugin"
+                sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="carriers/latvijaspasts/express_secret" xsi:type="string">1</item>
+            </argument>
+            <argument name="sensitive" xsi:type="array">
+                <item name="carriers/latvijaspasts/mans_pasts_user" xsi:type="string">1</item>
+            </argument>
+            <argument name="sensitive" xsi:type="array">
+                <item name="carriers/latvijaspasts/mans_pasts_secret" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

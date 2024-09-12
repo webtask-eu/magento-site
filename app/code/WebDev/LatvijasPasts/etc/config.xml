@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <latvijaspasts>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>WebDev\LatvijasPasts\Model\Carrier</model>
+                <title>Latvijas Pasts</title>
+                <allowed_methods>MANS_PASTS_COURIER,EXPRESS_COURIER,POST_OFFICE,POST_OFFICE_LT,LOCKER,LOCKER_LT,CIRCLE_K_DUS</allowed_methods>
+                <mans_pasts_demo>0</mans_pasts_demo>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <unit_of_measure>KG</unit_of_measure>
+                <max_package_weight>700</max_package_weight>
+                <active_rma>0</active_rma>
+                <isproduction>0</isproduction>
+                <is_online>1</is_online>
+                <handling_type>F</handling_type>
+                <express_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <mans_pasts_user backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <mans_pasts_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+            </latvijaspasts>
+        </carriers>
+    </default>
+</config>

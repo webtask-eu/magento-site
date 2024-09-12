@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_Blog
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="hexamarvel_blog" resource="default" engine="innodb" comment="Hexamarvel Blog Table">
+	    <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Blog Title"/>
+        <column xsi:type="varchar" name="store" nullable="false" length="255" comment="Blog Store"/>
+        <column xsi:type="varchar" name="sort_order" nullable="false" length="255" comment="Sort Order"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255" comment="Blog String Identifier"/>
+        <column xsi:type="varchar" name="category" nullable="false" length="255" comment="Category"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Is Block Active"/>
+        <column xsi:type="smallint" name="comments_enabled" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Comments Enabled"/>
+        <column xsi:type="mediumtext" name="thumbnail_image" nullable="true" comment="Thumbnail Image"/>
+        <column xsi:type="mediumtext" name="blog_image" nullable="true" comment="Blog Image"/>
+        <column xsi:type="mediumtext" name="short_content" nullable="true" comment="Blog Short Content"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Blog Content"/>
+        <column xsi:type="mediumtext" name="meta_keywords" nullable="true" comment="Blog Meta Keywords"/>
+        <column xsi:type="mediumtext" name="meta_description" nullable="true" comment="Blog Meta Description"/>
+        <column xsi:type="mediumtext" name="related_products" nullable="true" comment="Blog Related Products"/>
+        <column xsi:type="varchar" name="author" nullable="false" length="255" comment="Blog Author"/>
+        <column xsi:type="timestamp" name="created_on" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Blog Creation Time"/>
+        <column xsi:type="timestamp" name="updated_on" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Blog Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+        <index referenceId="HEXAMARVEL_BLOG_TITLE_IDENTIFIER_SHORT_CONTENT_CONTENT" indexType="fulltext">
+            <column name="title"/>
+            <column name="identifier"/>
+            <column name="short_content"/>
+            <column name="content"/>
+        </index>
+	</table>
+	<table name="hexamarvel_category" resource="default" engine="innodb" comment="Hexamarvel Blog Table">
+	    <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="category_title" nullable="false" length="255" comment="Category Title"/>
+        <column xsi:type="varchar" name="category_identifier" nullable="false" length="255" comment="Category Identifier"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Is Category Active"/>
+        <column xsi:type="mediumtext" name="meta_keywords" nullable="true" comment="Category Meta Keywords"/>
+        <column xsi:type="mediumtext" name="meta_description" nullable="true" comment="Category Meta Description"/>
+        <column xsi:type="timestamp" name="created_on" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Blog Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+        <index referenceId="HEXAMARVEL_CATEGORY_CATEGORY_TITLE_CATEGORY_IDENTIFIER" indexType="fulltext">
+            <column name="category_title"/>
+            <column name="category_identifier"/>
+        </index>
+	</table>
+</schema>

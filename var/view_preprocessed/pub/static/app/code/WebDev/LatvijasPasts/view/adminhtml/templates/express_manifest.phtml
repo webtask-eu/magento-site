@@ -1,0 +1,28 @@
+<?php /** @var \WebDev\LatvijasPasts\Model\Template\ExpressManifestTemplate $this */ $items = $this->getOrders(); ?> <?php if (count($items)): ?> <?php $groupedItems = []; foreach ($items as $item) { if ($item->getManifestDate() == NULL) $date = "new"; else $date = date('Y-m-d H:i', strtotime($item->getManifestDate())); if (!isset($groupedItems[$date])) $groupedItems[$date] = []; $groupedItems[$date][] = $item; } krsort($groupedItems); $pageLimit = 4; $totalPages = ceil(count($groupedItems) / $pageLimit); $currentPage = 1; if (isset($_GET['p'])) $currentPage = $_GET['p']; if ($currentPage > $totalPages) { $currentPage = $totalPages; } $counter = 0; if ($totalPages > 1) { $paginationHtml = '<div class="pagination">'; $paginationHtml .= ' <a href="?p=1" style = "padding:5px 8px;border:1px solid #000;">«</a>'; $start = 1; if ($currentPage > 5) $start = $currentPage - 2; $end = $start + 5; if ($end > $totalPages) $end = $totalPages; for ($i = $start; $i <= $end; $i++) { $paginationHtml .= '<a href="?p=' . $i . '" style = "padding:5px 8px;border:1px solid #000;' . ($currentPage == $i ? 'background-color:#303030;color:#ffffff;' : '') . '">' . $i . '</a>'; } $paginationHtml .= '<a href="?p=' . $totalPages . '" style = "padding:5px 8px;border:1px solid #000;">»</a>'; $paginationHtml .= '</div>'; echo $paginationHtml; } ?> <?php foreach ($groupedItems as $date => $orders): ?> <?php $counter++; if ($currentPage * $pageLimit - $pageLimit >= $counter) continue; if (($currentPage) * $pageLimit < $counter) break; ?> <br/><h3><?= ($date == "new" ? __('New orders') : $date) ?></h3><div class="grid"><table class="data-grid"><thead><tr><th class="data-grid-th" style="width: 3rem"><span class="data-grid-cell-content"><label> <input type="checkbox" class="check-all"/></label></span></th><th class="data-grid-th"><span class="data-grid-cell-content"><?= __('Order ID') ?></span></th><th class="data-grid-th"><span class="data-grid-cell-content"><?= __('Manifest generation date') ?></span></th></tr></thead><tbody><?php foreach ($orders as $order): ?> <tr class="data-row"><?php $orderItems = []; $ids = $order->getId(); ?> <td style="width: 3rem"><div class="data-grid-cell-content"><label> <input type="checkbox" name="items[]" class="manifest-item" value="<?= $ids; ?>"/></label></div></td><td><div class="data-grid-cell-content"><?= $order->getIncrementId() ?></div></td><td><div class="data-grid-cell-content"><?= $order->getManifestDate() ?></div></td></tr><?php endforeach; ?></tbody></table></div><?php endforeach; ?> <div><br/><div class="f-left"><form id="manifest-print-form" action="<?= $this->getUrl('latvijaspasts/manifest/printexpresspasts'); ?>" method="GET"></form><button id="submit_manifest_items" title="<?= __('Generate manifest'); ?>" type="button" class="scalable save"><span><?= __('Generate manifest') ?></span></button></div><div class="f-clear"></div></div><script>
+        require([
+            'jquery'
+        ], function ($) {
+            $('document').ready(function () {
+                $('#submit_manifest_items').on('click', function () {
+                    var ids = "";
+                    $('.manifest-item:checked').each(function () {
+                        ids += $(this).val() + ";";
+                        var id = $(this).val();
+                        $('#manifest-print-form').append('<input type="hidden" name="order_ids[]" value = "' + id + '" />');
+                    });
+                    $('#item_ids').val(ids);
+                    if (ids === "") {
+                        alert('<?= __('Select orders'); ?>');
+                    } else {
+                        $('#manifest-print-form').submit();
+                    }
+                });
+
+                $('.check-all').on('click', function () {
+                    var checked = $(this).prop('checked');
+                    $(this).parents('table').find('.manifest-item').each(function () {
+                        $(this).prop('checked', checked);
+                    });
+                });
+            });
+        });</script><?php else: ?> <p><?= __('No ExpressPasts shipments found!') ?></p><?php endif ?>

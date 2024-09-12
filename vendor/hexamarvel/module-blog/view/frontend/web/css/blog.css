@@ -1,0 +1,134 @@
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_Blog
+ */
+.hexablog-list .post-content {
+  width: 100%;
+  display: inline-block;
+  margin-top: 20px;
+}
+.hexablog-list .post-content .post-inner {
+  width: 33.3333%;
+  float: left;
+  clear: none;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.hexablog-list .post-content .post-inner:nth-child(3n+1) {
+  clear: left;
+}
+.hexablog-list .toolbar-amount{
+  float: left;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+.hexablog-list .toolbar-sorter {
+  float: left;
+  margin-right: 10px;
+  padding-right: 3px;
+}
+.hexablog-list .limiter{
+  float: left;
+  margin-right: 15px;
+}
+.hexablog-list .sorter{
+  float: left;
+  padding: 10px 0px;
+}
+.hexablog-list .pager {
+  clear: both;
+  margin: 0;
+  border-bottom: none;
+  border-top: 1px dashed #e5e5e5;
+  text-align: center;
+  padding: 10px 0;
+}
+.hexablog-list .order-blog-toolbar {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: -1px;
+}
+.hexablog-list .toolbar .pages {
+  margin-bottom: 0px;
+}
+.postview_bottom .botton-accessories {
+  padding-right: 19px;
+}
+.postview_bottom {
+  border-top: 1px solid #e5e5e5;
+  padding: 12px 0px;
+  margin-top: 30px;
+}
+body.hexablog-index-post .postWrapper.column-left,
+body.hexablog-index-index .listWrapper.column-left,
+body.hexablog-index-category .listWrapper.column-left {
+  width: 78%;
+  float: right;
+}
+body.hexablog-index-post .postWrapper.column-right,
+body.hexablog-index-index .listWrapper.column-right,
+body.hexablog-index-category .listWrapper.column-right {
+  width: 78%;
+  float: left;
+}
+.blog-sidebar.left-sidebar{
+  float: left;
+  width: 20%;
+}
+.blog-sidebar.right-sidebar{
+  float: right;
+  width: 20%;
+}
+.blog-sidebar .sidebar-recent a{
+  display: block;
+  margin-bottom: 5px;
+}
+.blog-sidebar .sidebar-recent{
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 2rem;
+}
+@media only screen and (max-width: 600px) {
+  .postview_bottom .botton-accessories {
+    display: block;
+  }
+  .hexablog-list .pager {
+    display: block;
+  }
+  .hexablog-list .toolbar-amount, .hexablog-list .pages, .hexablog-list .limiter {
+    width: auto;
+    text-align: left;
+    padding: 14px 0px;
+  }
+  .hexablog-list .pages .pages-item-next{
+    right: auto;
+  }
+  .hexablog-list .pages .pages-items{
+    padding: 0px;
+  }
+  .hexablog-list .limiter{
+    padding-bottom: 0px;
+  }
+  .hexablog-list .toolbar-amount{
+    padding-top: 5px;
+  }
+  .hexablog-list .post-content .post-inner{
+    width: 100%;
+  }
+  body.hexablog-index-post .postWrapper.column-left,
+  body.hexablog-index-index .listWrapper.column-left,
+  body.hexablog-index-category .listWrapper.column-left,
+  body.hexablog-index-post .postWrapper.column-right,
+  body.hexablog-index-index .listWrapper.column-right,
+  body.hexablog-index-category .listWrapper.column-right,
+  .blog-sidebar.left-sidebar,
+  .blog-sidebar.right-sidebar{
+    float: none;
+    width: 100%;
+  }
+  body.hexablog-index-post .postWrapper {
+    width: 100% !important;
+    float: none !important;
+  }
+}

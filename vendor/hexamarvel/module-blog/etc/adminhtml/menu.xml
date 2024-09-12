@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_Blog
+ */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hexamarvel_Blog::main"
+            title="Hexamarvel Blog"
+            module="Hexamarvel_Blog"
+            resource="Hexamarvel_Blog::main"
+            parent="Magento_Backend::content"
+            sortOrder="999" />
+        <add id="Hexamarvel_Blog::view_post"
+            title="Posts"
+            module="Hexamarvel_Blog"
+            action="hexablog/post/index"
+            resource="Hexamarvel_Blog::view_post"
+            parent="Hexamarvel_Blog::main"
+            sortOrder="10" />
+        <add id="Hexamarvel_Blog::view_cat"
+            title="Category"
+            module="Hexamarvel_Blog"
+            action="hexablog/category/index"
+            resource="Hexamarvel_Blog::view_cat"
+            parent="Hexamarvel_Blog::main"
+            sortOrder="20" />
+        <add id="Hexamarvel_Blog::config"
+            title="Configuration"
+            module="Hexamarvel_Blog"
+            action="adminhtml/system_config/edit/section/hexablog"
+            resource="Hexamarvel_Blog::config"
+            parent="Hexamarvel_Blog::main"
+            sortOrder="30" />
+    </menu>
+</config>

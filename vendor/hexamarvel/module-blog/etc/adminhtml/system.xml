@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_Blog
+ */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Hexamarvel" translate="label" sortOrder="999" class="hexamarvel-tab">
+            <label>Hexamarvel Extensions</label>
+        </tab>
+        <section id="hexablog" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Blog</label>
+            <tab>Hexamarvel</tab>
+            <resource>Hexamarvel_Blog::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_menu" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Blog In Menu</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_header" translate="label" type="select" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Blog In Header Links</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="blog_menu_title" translate="label" type="text" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Blog Menu Title</label>
+                </field>
+                <field id="date_format" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Date Format</label>
+                    <comment>Use PHP date formats to display in post view page. (Ex: 'm/d/y H:i:s')</comment>
+                </field>
+                <field id="recent_blog" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sidebar Recent Blog Count</label>
+                    <comment>Leave empty to diable the sidebar recent blog</comment>
+                </field>
+                <field id="sidebar_category" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sidebar Category Count</label>
+                    <comment>Leave empty to diable the sidebar categories</comment>
+                </field>
+            </group>
+            <group id="blog_list" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Blog List Page Configurations</label>
+                <field id="blog_title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Blog Page Title</label>
+                </field>
+                <field id="route" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Route to Blog</label>
+                </field>
+                <field id="page_layout" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Layout</label>
+                    <source_model>Hexamarvel\Blog\Model\Config\Source\PageLayout</source_model>
+                </field>
+                <field id="breadcrumbs_inlist" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Breadcrumbs in List</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="post_sorting" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Post Sorting</label>
+                    <source_model>Hexamarvel\Blog\Model\Config\Source\PostSorting</source_model>
+                </field>
+                <field id="post_per_page" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Post Per Page</label>
+                    <comment>Use comma seperated numbers for drop down value</comment>
+                    <validate>validate-per-page-value-list required-entry</validate>
+                </field>
+                <field id="meta_keywords" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                </field>
+                <field id="meta_description" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                </field>
+                <field id="blog_width" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thumbnail Image Width</label>
+                </field>
+                <field id="blog_height" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thumbnail Image Height</label>
+                </field>
+            </group>
+            <group id="blog_view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Blog View Page Configurations</label>
+                <field id="breadcrumbs_inpost" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Breadcrumbs in Post</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_layout" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Layout</label>
+                    <source_model>Hexamarvel\Blog\Model\Config\Source\PageLayout</source_model>
+                </field>
+                <field id="blog_width" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Width</label>
+                </field>
+                <field id="blog_height" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Height</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

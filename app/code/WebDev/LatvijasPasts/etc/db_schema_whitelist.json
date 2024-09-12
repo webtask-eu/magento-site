@@ -1,0 +1,18 @@
+{
+    "quote_address": {
+        "column": {
+            "latvijas_pasts_json": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "manifest_date": true,
+            "manifest_url": true
+        }
+    },
+    "sales_order_address": {
+        "column": {
+            "latvijas_pasts_json": true
+        }
+    }
+}

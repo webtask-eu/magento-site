@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <group id="latvijaspasts" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Latvijas Pasts</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1" canRestore="1">
+                    <label>Title</label>
+                </field>
+                <field id="express_secret" translate="label" type="obscure" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>ExpressPasts Secret Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="mans_pasts_user" translate="label" type="obscure" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>MansPasts User ID</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="mans_pasts_secret" translate="label" type="obscure" sortOrder="43" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>MansPasts API Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="mans_pasts_demo" translate="label" type="select" sortOrder="47" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use MansPasts Demo API</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="price_circle_k_dus" translate="label" type="text" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>CircleK DUS Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_post_locker" translate="label" type="text" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Locker Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_post_office" translate="label" type="text" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Post Office Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_express_courier_lv" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>ExpressPasts Courier Price to Latvia</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_express_courier_eu" translate="label" type="text" sortOrder="83" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>ExpressPasts Courier Price to EU</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_express_courier" translate="label" type="text" sortOrder="86" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>ExpressPasts Courier Price to Other</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_manspasts_courier_lv" translate="label" type="text" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>MansPasts Courier Price to Latvia</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_manspasts_courier_eu" translate="label" type="text" sortOrder="93" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>MansPasts Courier Price to EU</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="price_manspasts_courier" translate="label" type="text" sortOrder="96" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>MansPasts Courier Price to Other</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="allowed_methods" translate="label" type="multiselect" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Allowed Methods</label>
+                    <source_model>WebDev\LatvijasPasts\Model\Source\Method</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="sallowspecific" translate="label" type="select" sortOrder="110" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Ship to Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="hs_code" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Default Product HS Code</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="origin_country" translate="label" type="select" sortOrder="140" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Default Product Origin Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="specificerrmsg" translate="label" type="textarea" sortOrder="150" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Displayed Error Message</label>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="160" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
