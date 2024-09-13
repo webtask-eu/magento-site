@@ -112,71 +112,70 @@ class SearchFilterPlugin
     // Получение продуктов из Elasticsearch
     private function getProductsFromElasticsearch($searchQuery)
     {
-        // параметры для поиска по Elasticsearch 8
         $params = [
-            'index' => 'magento2_product_1_v3',
+            'index' => 'magento2_product_1_v3',  // Указываем индекс, в котором производится поиск
             'body'  => [
                 'query' => [
-                    'bool' => [
-                        'should' => [
+                    'bool' => [  // Логический оператор "bool" позволяет комбинировать несколько условий поиска
+                        'should' => [  // Используем "should", чтобы запрос удовлетворял хотя бы одному из следующих условий
                             [
-                                'match_phrase_prefix' => [
+                                'match_phrase_prefix' => [  // Поиск по фразе с началом совпадения (префиксный поиск) по полю 'sku'
                                     'sku' => [
-                                        'query' => $searchQuery,
-                                        'slop' => 0,
-                                        'max_expansions' => 50,
-                                        'boost' => 7.0
+                                        'query' => $searchQuery,  // Поисковый запрос (введённый пользователем)
+                                        'slop' => 0,  // Указывает, что не допускаются изменения порядка слов (в данном случае это неактуально, так как используется одно слово)
+                                        'max_expansions' => 50,  // Максимальное количество расширений для поиска с учетом префиксов
+                                        'boost' => 7.0  // Значение приоритета (вес) для этого поля в результатах поиска
                                     ]
                                 ]
                             ],
                             [
-                                'match_phrase_prefix' => [
+                                'match_phrase_prefix' => [  // Поиск по фразе с началом совпадения по полю 'name'
                                     'name' => [
-                                        'query' => $searchQuery,
-                                        'slop' => 0,
-                                        'max_expansions' => 50,
-                                        'boost' => 6.0
+                                        'query' => $searchQuery,  // Поисковый запрос для поля 'name'
+                                        'slop' => 0,  // Точное совпадение порядка слов
+                                        'max_expansions' => 50,  // Максимальное количество префиксных совпадений
+                                        'boost' => 6.0  // Значение приоритета для поля 'name' (чуть ниже, чем для SKU)
                                     ]
                                 ]
                             ],
                             [
-                                'match' => [
+                                'match' => [  // Обычный поиск по полю 'manufacturer_value'
                                     'manufacturer_value' => [
-                                        'query' => $searchQuery,
-                                        'operator' => 'OR',
-                                        'fuzzy_transpositions' => true,
-                                        'boost' => 2.0
+                                        'query' => $searchQuery,  // Поисковый запрос для поля 'manufacturer_value'
+                                        'operator' => 'OR',  // Оператор "OR" для возможности поиска по нескольким словам
+                                        'fuzzy_transpositions' => true,  // Разрешаем незначительные изменения в последовательности символов для нахождения похожих слов
+                                        'boost' => 2.0  // Вес этого поля ниже, так как это менее важное поле для поиска
                                     ]
                                 ]
                             ],
                             [
-                                'match' => [
+                                'match' => [  // Поиск по полю 'status_value'
                                     'status_value' => [
-                                        'query' => $searchQuery,
-                                        'operator' => 'OR',
-                                        'fuzzy_transpositions' => true,
-                                        'boost' => 2.0
+                                        'query' => $searchQuery,  // Поисковый запрос для поля 'status_value'
+                                        'operator' => 'OR',  // Оператор "OR" для многословного запроса
+                                        'fuzzy_transpositions' => true,  // Разрешаем небольшие опечатки в запросе
+                                        'boost' => 2.0  // Низкий приоритет поля 'status_value'
                                     ]
                                 ]
                             ],
                             [
-                                'match' => [
+                                'match' => [  // Поиск по полю 'url_key'
                                     'url_key' => [
-                                        'query' => $searchQuery,
-                                        'operator' => 'OR',
-                                        'fuzzy_transpositions' => true,
-                                        'boost' => 2.0
+                                        'query' => $searchQuery,  // Поисковый запрос для поля 'url_key'
+                                        'operator' => 'OR',  // Оператор "OR" для поиска по нескольким словам
+                                        'fuzzy_transpositions' => true,  // Небольшие изменения в порядке символов допустимы
+                                        'boost' => 2.0  // Низкий вес для этого поля
                                     ]
                                 ]
                             ]
                         ],
-                        'minimum_should_match' => 1,
-                        'boost' => 1.0
+                        'minimum_should_match' => 1,  // Должно совпадать как минимум одно условие из списка 'should'
+                        'boost' => 1.0  // Общий вес для всей логической конструкции
                     ]
                 ]
             ]
         ];
-        
+                
         
 
 		
