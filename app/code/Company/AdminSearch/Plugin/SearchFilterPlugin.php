@@ -120,33 +120,53 @@ class SearchFilterPlugin
                     'bool' => [
                         'should' => [
                             [
-                                'wildcard' => [
-                                    'sku' => '*' . $searchQuery . '*',  // Используем wildcard для поиска по части строки в поле 'sku'
-                                    'boost' => 7.0
+                                'match_phrase_prefix' => [
+                                    'sku' => [
+                                        'query' => $searchQuery,
+                                        'slop' => 0,
+                                        'max_expansions' => 50,
+                                        'boost' => 7.0
+                                    ]
                                 ]
                             ],
                             [
-                                'wildcard' => [
-                                    'name' => '*' . $searchQuery . '*',  // Используем wildcard для поиска по части строки в поле 'name'
-                                    'boost' => 6.0
+                                'match_phrase_prefix' => [
+                                    'name' => [
+                                        'query' => $searchQuery,
+                                        'slop' => 0,
+                                        'max_expansions' => 50,
+                                        'boost' => 6.0
+                                    ]
                                 ]
                             ],
                             [
-                                'wildcard' => [
-                                    'manufacturer_value' => '*' . $searchQuery . '*',  // Используем wildcard для поиска по части строки в поле 'manufacturer_value'
-                                    'boost' => 2.0
+                                'match' => [
+                                    'manufacturer_value' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
                                 ]
                             ],
                             [
-                                'wildcard' => [
-                                    'status_value' => '*' . $searchQuery . '*',  // Используем wildcard для поиска по части строки в поле 'status_value'
-                                    'boost' => 2.0
+                                'match' => [
+                                    'status_value' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
                                 ]
                             ],
                             [
-                                'wildcard' => [
-                                    'url_key' => '*' . $searchQuery . '*',  // Используем wildcard для поиска по части строки в поле 'url_key'
-                                    'boost' => 2.0
+                                'match' => [
+                                    'url_key' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
                                 ]
                             ]
                         ],
@@ -156,7 +176,7 @@ class SearchFilterPlugin
                 ]
             ]
         ];
-                
+        
         
 
 		
