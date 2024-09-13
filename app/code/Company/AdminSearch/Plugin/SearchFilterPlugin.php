@@ -118,41 +118,60 @@ class SearchFilterPlugin
             'body'  => [
                 'query' => [
                     'bool' => [
-                        'must' => [
-                            // Поиск только видимых продуктов, если это применимо в админке
-                            ['terms' => ['visibility' => ['3', '4'], 'boost' => 1.0]]
-                        ],
                         'should' => [
-                            // Гибкий поиск по SKU с поддержкой неточных совпадений
-                            ['match' => ['sku' => [
-                                'query' => $searchQuery,
-                                'operator' => 'OR',
-                                'fuzzy_transpositions' => true,
-                                'max_expansions' => 50,
-                                'boost' => 7.0
-                            ]]],
-                            // Поиск по имени товара
-                            ['match' => ['name' => [
-                                'query' => $searchQuery,
-                                'operator' => 'OR',
-                                'fuzzy_transpositions' => true,
-                                'boost' => 6.0
-                            ]]],
-                            // Поиск по другим полям
-                            ['match' => ['manufacturer_value' => [
-                                'query' => $searchQuery,
-                                'boost' => 2.0
-                            ]]],
-                            ['match' => ['status_value' => [
-                                'query' => $searchQuery,
-                                'boost' => 2.0
-                            ]]],
-                            ['match' => ['url_key' => [
-                                'query' => $searchQuery,
-                                'boost' => 2.0
-                            ]]],
+                            [
+                                'match_phrase_prefix' => [
+                                    'sku' => [
+                                        'query' => $searchQuery,
+                                        'slop' => 0,
+                                        'max_expansions' => 50,
+                                        'boost' => 7.0
+                                    ]
+                                ]
+                            ],
+                            [
+                                'match_phrase_prefix' => [
+                                    'name' => [
+                                        'query' => $searchQuery,
+                                        'slop' => 0,
+                                        'max_expansions' => 50,
+                                        'boost' => 6.0
+                                    ]
+                                ]
+                            ],
+                            [
+                                'match' => [
+                                    'manufacturer_value' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
+                                ]
+                            ],
+                            [
+                                'match' => [
+                                    'status_value' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
+                                ]
+                            ],
+                            [
+                                'match' => [
+                                    'url_key' => [
+                                        'query' => $searchQuery,
+                                        'operator' => 'OR',
+                                        'fuzzy_transpositions' => true,
+                                        'boost' => 2.0
+                                    ]
+                                ]
+                            ]
                         ],
-                        'minimum_should_match' => 1, // Минимум одно совпадение
+                        'minimum_should_match' => 1,
+                        'boost' => 1.0
                     ]
                 ]
             ]
