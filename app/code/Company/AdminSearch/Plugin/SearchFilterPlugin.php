@@ -112,22 +112,52 @@ class SearchFilterPlugin
     // Получение продуктов из Elasticsearch
     private function getProductsFromElasticsearch($searchQuery)
     {
-        // параметры для поиска по Elasticsearch 7
+        // параметры для поиска по Elasticsearch 8
         $params = [
             'index' => 'magento2_product_1_v3',
             'body'  => [
                 'query' => [
                     'bool' => [
+                        'must' => [
+                            // Поиск только видимых продуктов, если это применимо в админке
+                            ['terms' => ['visibility' => ['3', '4'], 'boost' => 1.0]]
+                        ],
                         'should' => [
-                            [ 'wildcard' => [ 'sku' => '*' . $searchQuery . '*' ] ],
-                            [ 'wildcard' => [ 'name' => '*' . $searchQuery . '*' ] ],
-                            [ 'wildcard' => [ 'manufacturer_value' => '*' . $searchQuery . '*' ] ],
-                            [ 'wildcard' => [ 'supplier_value' => '*' . $searchQuery . '*' ] ]
-                        ]
+                            // Гибкий поиск по SKU с поддержкой неточных совпадений
+                            ['match' => ['sku' => [
+                                'query' => $searchQuery,
+                                'operator' => 'OR',
+                                'fuzzy_transpositions' => true,
+                                'max_expansions' => 50,
+                                'boost' => 7.0
+                            ]]],
+                            // Поиск по имени товара
+                            ['match' => ['name' => [
+                                'query' => $searchQuery,
+                                'operator' => 'OR',
+                                'fuzzy_transpositions' => true,
+                                'boost' => 6.0
+                            ]]],
+                            // Поиск по другим полям
+                            ['match' => ['manufacturer_value' => [
+                                'query' => $searchQuery,
+                                'boost' => 2.0
+                            ]]],
+                            ['match' => ['status_value' => [
+                                'query' => $searchQuery,
+                                'boost' => 2.0
+                            ]]],
+                            ['match' => ['url_key' => [
+                                'query' => $searchQuery,
+                                'boost' => 2.0
+                            ]]],
+                        ],
+                        'minimum_should_match' => 1, // Минимум одно совпадение
                     ]
                 ]
             ]
         ];
+        
         
 
 		
