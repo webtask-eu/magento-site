@@ -5,9 +5,22 @@ sudo systemctl status elasticsearch
 Перезапуск: 
 sudo service elasticsearch restart
 
-
 Статус индексов: 
 curl -X GET "localhost:9200/_cat/indices?v"
+
+Включение лога запросов: 
+Нужно поставить название своего индекса magento2_product_1_v3
+curl -X PUT "localhost:9200/magento2_product_1_v3/_settings" -H 'Content-Type: application/json' -d'
+{
+  "index": {
+    "search.slowlog.threshold.query.warn": "1ms",
+    "search.slowlog.threshold.query.info": "1ms",
+    "search.slowlog.threshold.query.debug": "1ms",
+    "search.slowlog.threshold.query.trace": "1ms"
+  }
+}'
+
+
 
 // Обновление статического контента (CSS, JS, HTML) для всех тем и языков
 // Выполняется для повышения производительности в production-режиме

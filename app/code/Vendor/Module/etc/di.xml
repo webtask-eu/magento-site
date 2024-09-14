@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\File\Uploader">
+        <arguments>
+            <argument name="extensions" xsi:type="array">
+                <item name="allowed" xsi:type="array">
+                    <item name="jpg" xsi:type="string">image/jpeg</item>
+                    <item name="jpeg" xsi:type="string">image/jpeg</item>
+                    <item name="png" xsi:type="string">image/png</item>
+                    <item name="gif" xsi:type="string">image/gif</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
