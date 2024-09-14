@@ -49,6 +49,7 @@
                 <value id="addthis" type="host">*.addthis.com</value>
                 <value id="pinterest" type="host">*.pinterest.com</value>
                 <value id="cdninstagram" type="host">*.cdninstagram.com</value>
+                <value id="blob">blob:</value>
             </values>
         </policy>
         <policy id="connect-src">
