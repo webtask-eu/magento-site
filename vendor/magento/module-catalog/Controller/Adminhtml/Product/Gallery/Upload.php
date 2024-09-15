@@ -90,7 +90,7 @@ class Upload extends \Magento\Backend\App\Action implements HttpPostActionInterf
             );
             $uploader->setAllowedExtensions($this->getAllowedExtensions());
             $imageAdapter = $this->adapterFactory->create();
-            $uploader->addValidateCallback('catalog_product_image', $imageAdapter, 'validateUploadFile');
+            //$uploader->addValidateCallback('catalog_product_image', $imageAdapter, 'validateUploadFile');
             $uploader->setAllowRenameFiles(true);
             $uploader->setFilesDispersion(true);
             $mediaDirectory = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
