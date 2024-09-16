@@ -97,7 +97,7 @@ class FileTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 
         self::assertArrayHasKey('errorcode', $result);
         self::assertEquals(0, $result['errorcode']);
-        self::assertEquals('Disallowed file type.', $result['error']);
+        self::assertEquals('Disallowed file type 3.', $result['error']);
     }
 
     /**

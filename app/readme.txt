@@ -28,6 +28,7 @@ php bin/magento cache:flush
 sudo chmod -R 777 generated/ var/ pub/static/
 
 После изменения в JS:
+git pull origin master
 php bin/magento cache:flush
 rm -rf pub/static/* var/view_preprocessed/*
 php bin/magento setup:static-content:deploy -f

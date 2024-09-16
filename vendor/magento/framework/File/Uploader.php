@@ -438,7 +438,7 @@ class Uploader
 
         //is file extension allowed
         if (!$this->checkAllowedExtension($this->getFileExtension())) {
-            throw new ValidationException(__('Disallowed file type.'));
+            throw new ValidationException(__('Disallowed file type 2.'));
         }
         //run validate callbacks
         foreach ($this->_validateCallbacks as $params) {

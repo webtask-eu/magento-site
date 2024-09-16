@@ -79,7 +79,7 @@ define([
 
                     if (!allowedResize)  {
                         fileUploader.aggregateError(currentFile.name,
-                            $.mage.__('Disallowed file type.'));
+                            $.mage.__('Disallowed file type 1.'));
                         fileUploader.onLoadingStop();
                         return false;
                     }
