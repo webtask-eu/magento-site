@@ -23,7 +23,7 @@ define([
             messagesPath: 'media_gallery_listing.media_gallery_listing.messages',
             imageUploadUrl: '',
             acceptFileTypes: '',
-            allowedExtensions: '',
+            allowedExtensions: ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'gif'],
             maxFileSize: '',
             maxFileNameLength: 90,
             loader: false,
