@@ -382,7 +382,7 @@
                 <item name="isShowImageUploadInstructions" xsi:type="boolean">false</item>
                 <item name="isShowImageUploadOptions" xsi:type="boolean">true</item>
                 <item name="maxFileSize" xsi:type="object">ImageMaxFileSizeDesktop</item>
-                <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
+                <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png JPG JPEG</item>
                 <item name="component" xsi:type="string">Magento_PageBuilder/js/form/element/image-uploader</item>
                 <item name="componentType" xsi:type="string">imageUploader</item>
                 <item name="dataScope" xsi:type="string">background_image</item>
