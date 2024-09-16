@@ -20,7 +20,12 @@ curl -X PUT "localhost:9200/magento2_product_1_v3/_settings" -H 'Content-Type: a
   }
 }'
 
-
+Запуск после обновления файлов:
+git pull origin master 
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy -f
+php bin/magento cache:flush
+sudo chmod -R 777 generated/ var/ pub/static/
 
 // Обновление статического контента (CSS, JS, HTML) для всех тем и языков
 // Выполняется для повышения производительности в production-режиме
