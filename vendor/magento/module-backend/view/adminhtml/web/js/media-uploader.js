@@ -42,7 +42,7 @@ define([
                 targetElement = this.element.find('.fileinput-button.form-buttons')[0],
                 uploadUrl = $(uploaderElement).attr('data-url'),
                 fileId = null,
-                allowedExt = ['jpeg', 'jpg', 'png', 'gif'],
+                allowedExt = ['jpeg', 'jpg', 'JPG', 'png', 'gif'],
                 allowedResize = false,
                 options = {
                     proudlyDisplayPoweredByUppy: false,
