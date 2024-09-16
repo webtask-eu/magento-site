@@ -92,6 +92,10 @@ define([
                 this.replaceInputTypeFile(fileInput);
 
                 const uppy = new Uppy.Uppy({
+                    restrictions: {
+                        allowedFileTypes: ['.gif', '.jpeg', '.JPG', '.JPEG', '.jpg', '.png'],
+                        maxFileSize: this.element.data('maxFileSize')
+                    },
                     autoProceed: true,
 
                     onBeforeFileAdded: (currentFile) => {
@@ -384,6 +388,7 @@ define([
          * @returns {Boolean}
          */
         isExtensionAllowed: function (file) {
+            let extension = file.name.split('.').pop().toLowerCase(); // Приводим к нижнему регистру
             return validator('validate-file-type', file.name, this.allowedExtensions);
         },
 
