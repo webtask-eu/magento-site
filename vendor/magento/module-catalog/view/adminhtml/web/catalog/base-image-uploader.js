@@ -166,7 +166,9 @@ define([
                 },
 
                 onBeforeFileAdded: (currentFile) => {
-
+                    console.log('File name:', currentFile.name);
+                    console.log('Allowed file types:', uppy.opts.restrictions.allowedFileTypes);
+            
                     if (fileObj.length > this.options.maxImageUploadCount) {
                         $('body').notification('clear').notification('add', {
                             error: true,
