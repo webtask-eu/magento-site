@@ -81,7 +81,7 @@ class SearchFilterPlugin
     private function getCurrentIndex($pattern = 'magento2_product_*')
     {
         try {
-            $params = ['index' => '_cat/indices/' . $pattern, 'format' => 'json'];
+            $params = ['index' => '_cat/indices' . $pattern, 'format' => 'json'];
             $response = $this->elasticsearchClient->cat()->indices($params);
     
             $this->logger->debug('Получен список индексов от Elasticsearch: ' . json_encode($response));
