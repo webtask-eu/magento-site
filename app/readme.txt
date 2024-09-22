@@ -1,6 +1,15 @@
+Планировщик:
+tail -f /var/www/html/var/log/magento.cron.log
+systemctl status cron 
 
 Статус elasticsearch:
 sudo systemctl status elasticsearch
+crontab -e
+
+Статус задач:
+mysql -u root
+use magento;
+SELECT * FROM cron_schedule ORDER BY scheduled_at DESC LIMIT 10;
 
 Перезапуск: 
 sudo service elasticsearch restart

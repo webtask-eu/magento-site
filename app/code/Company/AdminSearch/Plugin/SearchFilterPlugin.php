@@ -1,4 +1,3 @@
-<?php
 namespace Company\AdminSearch\Plugin;
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
@@ -76,44 +75,39 @@ class SearchFilterPlugin
         return $proceed(...$args);
     }
 
-    // Логируем и фильтруем запросы
-    private function interceptQuery(ProductCollection $subject, callable $proceed, ...$args)
+    // Метод для получения актуального индекса
+    private function getCurrentIndex($pattern = 'magento2_product_*')
     {
-        $searchQuery = $this->request->getParam('search');
-        $this->logger->debug('Параметр search из запроса: ' . ($searchQuery ? $searchQuery : 'Пусто'));
+        try {
+            $params = ['index' => '_cat/indices/' . $pattern, 'format' => 'json'];
+            $response = $this->elasticsearchClient->cat()->indices($params);
 
-        if ($searchQuery) {
-            $this->logger->debug('Поисковый запрос: ' . $searchQuery);
-
-            // Elasticsearch logic
-            $productIds = $this->getProductsFromElasticsearch($searchQuery);
-            if (!empty($productIds)) {
-                $this->logger->debug('Применяем фильтр по entity_id: ' . implode(', ', $productIds));
-                $subject->addFieldToFilter('entity_id', ['in' => $productIds]);
-
-                // Логируем SQL-запрос
-                $this->logger->debug('SQL Query после добавления фильтра: ' . $subject->getSelect()->__toString());
-
-                return $subject;
-            } else {
-                $this->logger->debug('Результаты Elasticsearch пусты. Применяем фильтр entity_id = -1');
-                $subject->addFieldToFilter('entity_id', ['eq' => '-1']);
-
-                // Логируем SQL-запрос
-                $this->logger->debug('SQL Query после фильтра: ' . $subject->getSelect()->__toString());
-
-                return $subject;
+            // Находим индекс с самой новой версией
+            $latestIndex = '';
+            $latestVersion = 0;
+            foreach ($response as $index) {
+                preg_match('/_(v\d+)$/', $index['index'], $matches);
+                if (isset($matches[1]) && (int)filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT) > $latestVersion) {
+                    $latestVersion = (int)filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
+                    $latestIndex = $index['index'];
+                }
             }
+            $this->logger->debug('Актуальный индекс: ' . $latestIndex);
+            return $latestIndex;
+        } catch (\Exception $e) {
+            $this->logger->error('Ошибка при получении актуального индекса: ' . $e->getMessage());
+            return 'magento2_product_1_v3'; // Значение по умолчанию в случае ошибки
         }
-
-        return $proceed(...$args);
     }
 
     // Получение продуктов из Elasticsearch
     private function getProductsFromElasticsearch($searchQuery)
     {
+        // Получаем актуальный индекс
+        $currentIndex = $this->getCurrentIndex();
+
         $params = [
-            'index' => 'magento2_product_1_v3',  // Указываем индекс, в котором производится поиск
+            'index' => $currentIndex,  // Используем актуальный индекс
             'body'  => [
                 'query' => [
                     'bool' => [  // Логический оператор "bool" позволяет комбинировать несколько условий поиска
@@ -175,10 +169,7 @@ class SearchFilterPlugin
                 ]
             ]
         ];
-                
-        
 
-		
         try {
             $this->logger->debug('Запрос к Elasticsearch: ' . json_encode($params));
             $results = $this->elasticsearchClient->search($params);
