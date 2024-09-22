@@ -79,50 +79,41 @@ class SearchFilterPlugin
 
     // Метод для получения актуального индекса
     private function getCurrentIndex($pattern = 'magento2_product_*')
-{
-    try {
-        // Параметры для получения всех индексов
-        $params = [
-            'index' => '_all',  // Используем '_all', чтобы получить все индексы
-            'format' => 'json'
-        ];
-        $response = $this->elasticsearchClient->cat()->indices($params);
-
-        $this->logger->debug('Список индексов от Elasticsearch: ' . json_encode($response));
-
-        // Фильтруем индексы по паттерну
-        $matchingIndices = [];
-        foreach ($response as $indexInfo) {
-            if (preg_match("/^$pattern$/", $indexInfo['index'])) {
-                $matchingIndices[] = $indexInfo['index'];
+    {
+        try {
+            // Получаем список индексов
+            $params = ['format' => 'json'];
+            $response = $this->elasticsearchClient->cat()->indices($params);
+    
+            $latestIndex = '';
+            $latestVersion = 0;
+    
+            foreach ($response as $index) {
+                if (preg_match('/^' . str_replace('*', '.*', $pattern) . '(?:_(v\d+))?$/', $index['index'], $matches)) {
+                    // Если индекс совпадает с паттерном, извлекаем номер версии
+                    $version = isset($matches[1]) ? (int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT) : 0;
+    
+                    // Находим индекс с самой новой версией
+                    if ($version > $latestVersion) {
+                        $latestVersion = $version;
+                        $latestIndex = $index['index'];
+                    }
+                }
             }
-        }
-
-        // Находим индекс с самой новой версией
-        $latestIndex = '';
-        $latestVersion = 0;
-        foreach ($matchingIndices as $index) {
-            preg_match('/_(v\d+)$/', $index, $matches);
-            if (isset($matches[1]) && (int)filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT) > $latestVersion) {
-                $latestVersion = (int)filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
-                $latestIndex = $index;
+    
+            if ($latestIndex) {
+                $this->logger->debug('Актуальный индекс: ' . $latestIndex);
+                return $latestIndex;
+            } else {
+                $this->logger->error('Не удалось найти подходящий индекс по паттерну: ' . $pattern);
+                return null;
             }
+        } catch (\Exception $e) {
+            $this->logger->error('Ошибка при получении актуального индекса: ' . $e->getMessage());
+            return null;
         }
-
-        // Если нашли подходящий индекс, возвращаем его
-        if ($latestIndex) {
-            $this->logger->debug('Актуальный индекс: ' . $latestIndex);
-            return $latestIndex;
-        } else {
-            // Если подходящий индекс не найден, логируем и возвращаем значение по умолчанию
-            $this->logger->error('Не удалось найти подходящий индекс по паттерну: ' . $pattern);
-            return 'magento2_product_'; // Значение по умолчанию в случае ошибки
-        }
-    } catch (\Exception $e) {
-        $this->logger->error('Ошибка при получении актуального индекса: ' . $e->getMessage());
-        return 'magento2_product_'; // Значение по умолчанию в случае ошибки
     }
-}
+    
 
 
     // Получение продуктов из Elasticsearch
