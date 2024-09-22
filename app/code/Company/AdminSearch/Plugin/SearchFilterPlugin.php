@@ -81,30 +81,32 @@ class SearchFilterPlugin
     private function getCurrentIndex($pattern = 'magento2_product_*')
     {
         try {
-            // Получаем список индексов
-            $params = ['format' => 'json'];
+            $params = ['index' => '_cat/indices/' . $pattern, 'format' => 'json'];
             $response = $this->elasticsearchClient->cat()->indices($params);
-            
-            $this->logger->debug('Список индексов от Elasticsearch: ' . json_encode($response));
     
+            $this->logger->debug('Получен список индексов от Elasticsearch: ' . json_encode($response));
+    
+            // Находим индекс с самой новой версией
             $latestIndex = '';
             $latestVersion = 0;
-    
             foreach ($response as $index) {
-                if (preg_match('/^' . str_replace('*', '.*', $pattern) . '(?:_(v\d+))?$/', $index['index'], $matches)) {
-                    // Если индекс совпадает с паттерном, извлекаем номер версии
-                    $version = isset($matches[1]) ? (int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT) : 0;
+                $this->logger->debug('Обработка индекса: ' . $index['index']);
     
-                    // Находим индекс с самой новой версией
-                    if ($version > $latestVersion) {
-                        $latestVersion = $version;
+                preg_match('/_(v\d+)$/', $index['index'], $matches);
+                if (isset($matches[1])) {
+                    $versionNumber = (int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
+                    $this->logger->debug('Найден индекс с версией: ' . $versionNumber);
+    
+                    if ($versionNumber > $latestVersion) {
+                        $latestVersion = $versionNumber;
                         $latestIndex = $index['index'];
+                        $this->logger->debug('Актуальный индекс обновлен: ' . $latestIndex);
                     }
                 }
             }
     
             if ($latestIndex) {
-                $this->logger->debug('Актуальный индекс: ' . $latestIndex);
+                $this->logger->debug('Итоговый актуальный индекс: ' . $latestIndex);
                 return $latestIndex;
             } else {
                 $this->logger->error('Не удалось найти подходящий индекс по паттерну: ' . $pattern);
@@ -116,11 +118,13 @@ class SearchFilterPlugin
         }
     }
     
+    
 
 
     // Получение продуктов из Elasticsearch
     private function getProductsFromElasticsearch($searchQuery)
     {
+        
         // Получаем актуальный индекс
         $currentIndex = $this->getCurrentIndex();
 
