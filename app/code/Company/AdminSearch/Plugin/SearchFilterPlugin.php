@@ -81,26 +81,32 @@ class SearchFilterPlugin
     private function getCurrentIndex($pattern = 'magento2_product_*')
     {
         try {
-            $params = ['index' => '_cat/indices' . $pattern, 'format' => 'json'];
+            // Запрос всех индексов с использованием формата json
+            $params = ['format' => 'json'];
             $response = $this->elasticsearchClient->cat()->indices($params);
     
+            // Логируем полученный список индексов от Elasticsearch
             $this->logger->debug('Получен список индексов от Elasticsearch: ' . json_encode($response));
     
-            // Находим индекс с самой новой версией
             $latestIndex = '';
             $latestVersion = 0;
+    
             foreach ($response as $index) {
-                $this->logger->debug('Обработка индекса: ' . $index['index']);
+                // Проверяем, соответствует ли индекс шаблону
+                if (fnmatch($pattern, $index['index'])) {
+                    $this->logger->debug('Обработка индекса: ' . $index['index']);
     
-                preg_match('/_(v\d+)$/', $index['index'], $matches);
-                if (isset($matches[1])) {
-                    $versionNumber = (int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
-                    $this->logger->debug('Найден индекс с версией: ' . $versionNumber);
+                    // Ищем версию индекса в формате '_vN' в конце названия
+                    preg_match('/_(v\d+)$/', $index['index'], $matches);
+                    if (isset($matches[1])) {
+                        $versionNumber = (int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
+                        $this->logger->debug('Найден индекс с версией: ' . $versionNumber);
     
-                    if ($versionNumber > $latestVersion) {
-                        $latestVersion = $versionNumber;
-                        $latestIndex = $index['index'];
-                        $this->logger->debug('Актуальный индекс обновлен: ' . $latestIndex);
+                        if ($versionNumber > $latestVersion) {
+                            $latestVersion = $versionNumber;
+                            $latestIndex = $index['index'];
+                            $this->logger->debug('Актуальный индекс обновлен: ' . $latestIndex);
+                        }
                     }
                 }
             }
@@ -117,6 +123,7 @@ class SearchFilterPlugin
             return null;
         }
     }
+    
     
     
 
