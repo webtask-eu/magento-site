@@ -1,3 +1,5 @@
+<?php 
+
 namespace Company\AdminSearch\Plugin;
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
