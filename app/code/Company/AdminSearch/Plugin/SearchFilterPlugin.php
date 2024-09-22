@@ -84,6 +84,8 @@ class SearchFilterPlugin
             // Получаем список индексов
             $params = ['format' => 'json'];
             $response = $this->elasticsearchClient->cat()->indices($params);
+            
+            $this->logger->debug('Список индексов от Elasticsearch: ' . json_encode($response));
     
             $latestIndex = '';
             $latestVersion = 0;
