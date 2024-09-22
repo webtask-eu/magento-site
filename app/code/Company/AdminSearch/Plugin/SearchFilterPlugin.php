@@ -116,11 +116,11 @@ class SearchFilterPlugin
         } else {
             // Если подходящий индекс не найден, логируем и возвращаем значение по умолчанию
             $this->logger->error('Не удалось найти подходящий индекс по паттерну: ' . $pattern);
-            return 'magento2_product_1_v3'; // Значение по умолчанию в случае ошибки
+            return 'magento2_product_'; // Значение по умолчанию в случае ошибки
         }
     } catch (\Exception $e) {
         $this->logger->error('Ошибка при получении актуального индекса: ' . $e->getMessage());
-        return 'magento2_product_1_v3'; // Значение по умолчанию в случае ошибки
+        return 'magento2_product_'; // Значение по умолчанию в случае ошибки
     }
 }
 
