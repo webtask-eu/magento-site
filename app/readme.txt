@@ -1,3 +1,17 @@
+Для включения лога дебага:
+php bin/magento deploy:mode:set developer
+> var/log/debug.log 
+tail -n 500 var/log/debug.log 
+
+Просмотр логов:
+
+> var/log/system.log
+> var/log/exception.log
+
+tail -n 500 var/log/system.log 
+tail -n 500 var/log/exception.log 
+
+
 Планировщик:
 tail -f /var/www/html/var/log/magento.cron.log
 systemctl status cron 
