@@ -99,8 +99,14 @@
     </table>
 </div>
 
+<?php
+// Используем хелпер для форматирования цены
+$pricingHelper = $block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class);
+?>
+<?php if ($totalPrice > 0): ?>
     <div class="total-price">
-        <strong><?php echo __('Total Price: ') . $block->escapeHtml($block->getCurrency()->format($totalPrice)); ?></strong>
+        <strong><?php echo __('Total Price: ') . $block->escapeHtml($pricingHelper->currency($totalPrice, true, false)); ?></strong>
     </div>
+<?php endif; ?>
 
 <div id="validation-message-box"></div>
