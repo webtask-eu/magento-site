@@ -18,6 +18,8 @@
 <?php $_associatedProducts = $block->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
 
+<?php $totalPrice = 0; // Переменная для хранения итоговой цены комплекта ?>
+
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Grouped product items') ?></caption>
@@ -39,6 +41,7 @@
                     <?php if ($block->getCanShowProductPrice($_product)): ?>
                         <?php if ($block->getCanShowProductPrice($_item)): ?>
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item) ?>
+                            <?php $totalPrice += $_item->getFinalPrice() * $_item->getQty(); // Умножаем цену на количество ?>
                         <?php endif; ?>
                      <?php endif; ?>
                 </td>
@@ -95,4 +98,9 @@
         <?php endif; ?>
     </table>
 </div>
+
+    <div class="total-price">
+        <strong><?php echo __('Total Price: ') . $block->escapeHtml($block->formatPrice($totalPrice)); ?></strong>
+    </div>
+
 <div id="validation-message-box"></div>
