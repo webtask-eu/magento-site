@@ -100,7 +100,7 @@
 </div>
 
     <div class="total-price">
-        <strong><?php echo __('Total Price: ') . $block->escapeHtml($block->formatPrice($totalPrice)); ?></strong>
+        <strong><?php echo __('Total Price: ') . $block->escapeHtml($block->getCurrency()->format($totalPrice)); ?></strong>
     </div>
 
 <div id="validation-message-box"></div>
