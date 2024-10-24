@@ -2,6 +2,12 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_associatedProducts = $this->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+
+<?php
+// Инициализация переменной для общей суммы
+$totalPrice = 0;
+?>
+
 <table class="data-table grouped-items-table" id="super-product-table">
     <col />
     <col />
@@ -20,13 +26,22 @@
     <tbody>
     <?php if ($_hasAssociatedProducts): ?>
     <?php foreach ($_associatedProducts as $_item): ?>
-        <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
+        <?php 
+        // Расчёт итоговой цены с учётом налогов
+        $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true);
+        // Добавляем цену текущего элемента к общей сумме
+        $totalPrice += $_finalPriceInclTax;
+        ?>
         <tr>
-            <td class="a-center"><p><img class="thumbnail"
-                         src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->constrainOnly(true)->resize(100); ?>"
-                         alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
-                         title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" /></p>
-            <?php echo $this->escapeHtml($_item->getName()) ?></td>
+            <td class="a-center">
+                <p>
+                    <img class="thumbnail"
+                        src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->constrainOnly(true)->resize(100); ?>"
+                        alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+                        title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+                </p>
+                <?php echo $this->escapeHtml($_item->getName()) ?>
+            </td>
             <?php if ($this->getCanShowProductPrice($_product)): ?>
             <td class="a-right">
                 <?php if ($this->getCanShowProductPrice($_item)): ?>
@@ -37,17 +52,17 @@
             <?php endif; ?>
             <?php if ($_product->isSaleable()): ?>
             <td class="a-center">
-            <?php if ($_item->isSaleable()) : ?>
-                <div class="qty-holder">
-                    <input type="text" name="super_group[<?php echo $_item->getId() ?>]" maxlength="12" value="<?php echo $_item->getQty()*1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                    <div class="qty-changer">
-                        <a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
-                        <a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
+                <?php if ($_item->isSaleable()) : ?>
+                    <div class="qty-holder">
+                        <input type="text" name="super_group[<?php echo $_item->getId() ?>]" maxlength="12" value="<?php echo $_item->getQty()*1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+                        <div class="qty-changer">
+                            <a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
+                            <a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
+                        </div>
                     </div>
-                </div>
-            <?php else: ?>
-                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-            <?php endif; ?>
+                <?php else: ?>
+                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>
             </td>
             <?php endif; ?>
         </tr>
@@ -59,10 +74,21 @@
     <?php endif; ?>
     </tbody>
 </table>
+
+<!-- Отображение общей цены комплекта -->
+<?php if ($_hasAssociatedProducts): ?>
+    <div class="total-price">
+        <strong><?php echo $this->__('Total Price: ') ?></strong>
+        <?php echo $this->helper('core')->currency($totalPrice, true, false); ?>
+    </div>
+<?php endif; ?>
+
 <script type="text/javascript">decorateTable('super-product-table')</script>
+
 <?php if ($_product->isAvailable() && $_hasAssociatedProducts): ?>
 	<p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
 <?php else: ?>
 	<p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
 <?php endif; ?>
+
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
