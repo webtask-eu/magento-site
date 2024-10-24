@@ -100,8 +100,10 @@
 </div>
 
 <?php
-// Используем хелпер для форматирования цены
-$pricingHelper = $block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class);
+<?php
+// Получаем хелпер цен через объектный менеджер
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$pricingHelper = $objectManager->get(\Magento\Framework\Pricing\Helper\Data::class);
 ?>
 <?php if ($totalPrice > 0): ?>
     <div class="total-price">
