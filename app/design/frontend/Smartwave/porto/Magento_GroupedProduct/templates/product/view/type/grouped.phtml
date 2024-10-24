@@ -18,6 +18,11 @@
 <?php $_associatedProducts = $block->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
 
+<?php
+// Инициализация переменной для общей суммы
+$totalPrice = 0;
+?>
+
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Grouped product items') ?></caption>
@@ -32,6 +37,12 @@
 
         <?php if ($_hasAssociatedProducts): ?>
         <?php foreach ($_associatedProducts as $_item): ?>
+        <?php
+            // Получение цены товара с учетом налогов
+            $_finalPriceInclTax = $block->helper('Magento\Tax\Helper\Data')->getPrice($_item, $_item->getFinalPrice(), true);
+            // Добавление цены текущего товара к общей сумме
+            $totalPrice += $_finalPriceInclTax;
+        ?>
         <tbody>
             <tr>
                 <td data-th="<?php echo $block->escapeHtml(__('Product Name')); ?>" class="col item">
@@ -95,4 +106,13 @@
         <?php endif; ?>
     </table>
 </div>
+
+<!-- Отображение общей цены -->
+<?php if ($_hasAssociatedProducts): ?>
+    <div class="total-price">
+        <strong><?php echo __('Total Price: ') ?></strong>
+        <?php echo $block->helper('Magento\Framework\Pricing\Helper\Data')->currency($totalPrice, true, false); ?>
+    </div>
+<?php endif; ?>
+
 <div id="validation-message-box"></div>
