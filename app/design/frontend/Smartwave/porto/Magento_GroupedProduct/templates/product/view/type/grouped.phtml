@@ -18,10 +18,6 @@
 <?php $_associatedProducts = $block->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
 
-<?php
-$totalPrice = 0; // Переменная для хранения итоговой цены комплекта
-?>
-
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Grouped product items') ?></caption>
@@ -42,10 +38,7 @@ $totalPrice = 0; // Переменная для хранения итогово�
                     <strong class="product-item-name"><?php echo $block->escapeHtml($_item->getName()) ?></strong>
                     <?php if ($block->getCanShowProductPrice($_product)): ?>
                         <?php if ($block->getCanShowProductPrice($_item)): ?>
-                            <?php
-                            /* @escapeNotVerified */ echo $block->getProductPrice($_item);
-                            $totalPrice += $_item->getFinalPrice() * $_item->getQty(); // Умножаем цену на количество
-                            ?>
+                            <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item) ?>
                         <?php endif; ?>
                      <?php endif; ?>
                 </td>
@@ -103,9 +96,3 @@ $totalPrice = 0; // Переменная для хранения итогово�
     </table>
 </div>
 <div id="validation-message-box"></div>
-
-<?php if ($totalPrice > 0): ?>
-    <div class="total-price">
-        <strong><?php echo __('Total Price: ') . $block->escapeHtml($block->formatPrice($totalPrice)); ?></strong>
-    </div>
-<?php endif; ?>
