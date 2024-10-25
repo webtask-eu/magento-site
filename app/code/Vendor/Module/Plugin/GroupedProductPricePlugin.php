@@ -18,7 +18,7 @@ class GroupedProductPricePlugin
         AbstractProduct $subject,
         callable $proceed,
         Product $product,
-        $priceType = \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE // добавляем тип цены
+        $priceType = \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE
     ) {
         if ($product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
             $totalPrice = 0;
@@ -28,11 +28,9 @@ class GroupedProductPricePlugin
                 $totalPrice += $item->getFinalPrice();
             }
 
-            // Возвращаем итоговую цену
             return '<span class="price">' . $this->priceHelper->currency($totalPrice, true, false) . '</span>';
         }
 
-        // Передаем оба аргумента в оригинальный метод, если продукт не является группированным
         return $proceed($product, $priceType);
     }
 }
