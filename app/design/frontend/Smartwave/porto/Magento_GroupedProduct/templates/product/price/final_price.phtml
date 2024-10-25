@@ -1,28 +1,33 @@
 <?php
-// Попробуем получить коллекцию продуктов на странице категорий
-$productCollection = $block->getLoadedProductCollection();
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
-// Отладка коллекции продуктов
-echo "<pre>";
-print_r($productCollection->getItems());
-echo "</pre>";
+/**
+ * Template for displaying grouped product price
+ */
+?>
+<?php
+$minProduct = $block->getSaleableItem()
+    ->getPriceInfo()
+    ->getPrice(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE)
+    ->getMinProduct();
 
-// Выбираем один продукт для обработки (если это возможно)
-if ($productCollection) {
-    foreach ($productCollection as $product) {
-        // Проверяем, является ли продукт группированным
-        if ($product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
-            echo "<p>Found a grouped product!</p>";
-
-            // Рассчитываем общую цену связанных продуктов
-            $_associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
-            $totalPrice = 0;
-            foreach ($_associatedProducts as $_item) {
-                $totalPrice += $_item->getFinalPrice();
-            }
-
-            echo "<p>Total price of grouped product: " . $totalPrice . "</p>";
-        }
-    }
+if ($minProduct) {
+    $amountRender = $block->getRendererPool()
+        ->createAmountRender(
+            $minProduct->getPriceInfo()->getPrice('final_price')->getAmount(),
+            $minProduct,
+            $minProduct->getPriceInfo()->getPrice('final_price'),
+            ['include_container' => true]
+        );
 }
 ?>
+<div class="price-box">
+    <?php if ($minProduct && \Magento\Framework\Pricing\Render::ZONE_ITEM_VIEW != $block->getZone()) : ?>
+    <p class="minimal-price">
+        <span class="price-label"><?= $block->escapeHtml(__('Starting at')) ?></span><?= $amountRender->toHtml() ?>
+    </p>
+    <?php endif ?>
+</div>
