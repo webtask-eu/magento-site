@@ -19,14 +19,4 @@
         </arguments>
     </type>
 
-    <!-- Новый плагин для группированных продуктов -->
-    <type name="Magento\Catalog\Block\Product\AbstractProduct">
-        <plugin name="vendor_module_grouped_product_price" type="Vendor\Module\Plugin\GroupedProductPricePlugin" sortOrder="10"/>
-    </type>
-
-    <type name="Magento\Catalog\Block\Product\ListProduct">
-        <plugin name="vendor_module_grouped_product_price" type="Vendor\Module\Plugin\GroupedProductPricePlugin" sortOrder="10"/>
-    </type>
-
-
 </config>
