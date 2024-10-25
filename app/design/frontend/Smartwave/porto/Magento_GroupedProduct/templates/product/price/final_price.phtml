@@ -1,61 +1,69 @@
 <?php
 // Попробуем получить продукт разными способами и добавим отладочные сообщения
 
-// Способ 1: Используем метод getSaleableItem()
-$product = $block->getSaleableItem();
-if ($product) {
-    echo "DEBUG: Product found using getSaleableItem().";
-} else {
-    echo "DEBUG: No product found using getSaleableItem().";
-}
-
-// Способ 2: Пробуем получить продукт через объект Registry
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$registry = $objectManager->get('Magento\Framework\Registry');
-$productFromRegistry = $registry->registry('current_product');
-if ($productFromRegistry) {
-    $product = $productFromRegistry;
-    echo "DEBUG: Product found using Registry (current_product).";
-} else {
-    echo "DEBUG: No product found using Registry (current_product).";
-}
-
-// Способ 3: Пробуем получить продукт через $_item, если он доступен в шаблоне
-if (isset($_item)) {
-    $product = $_item;
-    echo "DEBUG: Product found using \$_item.";
-} else {
-    echo "DEBUG: No product found using \$_item.";
-}
-
-// Проверяем, если продукт успешно найден
-if ($product) {
-    echo "DEBUG: Final product found for calculation.";
-    // Если продукт группированный, рассчитаем общую цену
-    if ($product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
-        $totalPrice = 0;
-        $associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
-        foreach ($associatedProducts as $associatedProduct) {
-            $totalPrice += $associatedProduct->getFinalPrice();
-        }
-        echo "DEBUG: Total price for grouped product calculated.";
+try {
+    // Способ 1: Используем метод getSaleableItem()
+    $product = $block->getSaleableItem();
+    if ($product) {
+        echo "DEBUG: Product found using getSaleableItem().<br>";
     } else {
-        echo "DEBUG: Product is not a grouped product.";
+        echo "DEBUG: No product found using getSaleableItem().<br>";
     }
-} else {
-    echo "DEBUG: No product found using any method.";
+
+    // Способ 2: Пробуем получить продукт через объект Registry
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $registry = $objectManager->get('Magento\Framework\Registry');
+    $productFromRegistry = $registry->registry('current_product');
+    if ($productFromRegistry) {
+        $product = $productFromRegistry;
+        echo "DEBUG: Product found using Registry (current_product).<br>";
+    } else {
+        echo "DEBUG: No product found using Registry (current_product).<br>";
+    }
+
+    // Способ 3: Пробуем получить продукт через $_item, если он доступен в шаблоне
+    if (isset($_item)) {
+        $product = $_item;
+        echo "DEBUG: Product found using \$_item.<br>";
+    } else {
+        echo "DEBUG: No product found using \$_item.<br>";
+    }
+
+    // Проверяем, если продукт успешно найден
+    if ($product) {
+        echo "DEBUG: Final product found for calculation.<br>";
+        // Если продукт группированный, рассчитаем общую цену
+        if ($product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
+            $totalPrice = 0;
+            $associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
+            foreach ($associatedProducts as $associatedProduct) {
+                $totalPrice += $associatedProduct->getFinalPrice();
+            }
+            echo "DEBUG: Total price for grouped product calculated.<br>";
+        } else {
+            echo "DEBUG: Product is not a grouped product.<br>";
+        }
+    } else {
+        echo "DEBUG: No product found using any method.<br>";
+    }
+    
+    // Если найден общий прайс, рендерим цену
+    if (isset($totalPrice) && $totalPrice > 0) {
+        echo '<div class="price-box">
+                <p class="minimal-price">
+                    <span class="price-label">' . __('Total Price') . '</span>
+                    <span class="price">' . $block->escapeHtml(
+                        $this->helper(\Magento\Framework\Pricing\Helper\Data::class)->currency($totalPrice, true, false)
+                    ) . '</span>
+                </p>
+              </div>';
+        echo "DEBUG: Price rendered.<br>";
+    } else {
+        echo "DEBUG: Price not rendered.<br>";
+    }
+} catch (Exception $e) {
+    echo "ERROR: " . $e->getMessage() . "<br>";
+    echo "ERROR in file: " . $e->getFile() . " on line " . $e->getLine() . "<br>";
+    echo "Stack trace: <pre>" . $e->getTraceAsString() . "</pre>";
 }
 ?>
-
-<div class="price-box">
-    <?php if (isset($totalPrice) && $totalPrice > 0): ?>
-        <p class="minimal-price">
-            <span class="price-label"><?= $block->escapeHtml(__('Total Price')) ?></span>
-            <span class="price"><?= $block->escapeHtml(
-                $this->priceHelper->currency($totalPrice, true, false)
-            ); ?></span>
-        </p>
-    <?php else: ?>
-        <?php echo "DEBUG: Price not rendered."; ?>
-    <?php endif; ?>
-</div>
