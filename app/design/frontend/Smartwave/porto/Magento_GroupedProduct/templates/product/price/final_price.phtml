@@ -27,10 +27,10 @@ if ($minProduct) {
 <div class="price-box">
     <?php if ($minProduct && \Magento\Framework\Pricing\Render::ZONE_ITEM_VIEW != $block->getZone()) : ?>
         <p class="minimal-price">
-    <?php if ($_product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE): ?>
+    <?php if ($block->getProduct()->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE): ?>
         <?php
         // Получаем связанные продукты
-        $_associatedProducts = $_product->getTypeInstance()->getAssociatedProducts($_product);
+        $_associatedProducts = $block->getProduct()->getTypeInstance()->getAssociatedProducts($block->getProduct());
         $totalPrice = 0;
 
         // Рассчитываем итоговую цену для всех продуктов
