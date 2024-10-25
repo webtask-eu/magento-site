@@ -10,28 +10,29 @@
 ?>
 <?php
 echo "DEBUG MESSAGE: Entered final_price.phtml";
-$minProduct = $block->getSaleableItem()
-    ->getPriceInfo()
-    ->getPrice(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE)
-    ->getMinProduct();
+$totalPrice = 0;
 
-if ($minProduct) {
-    echo "DEBUG MESSAGE: MinProduct found";
-    $amountRender = $block->getRendererPool()
-        ->createAmountRender(
-            $minProduct->getPriceInfo()->getPrice('final_price')->getAmount(),
-            $minProduct,
-            $minProduct->getPriceInfo()->getPrice('final_price'),
-            ['include_container' => true]
-        );
+if ($product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
+    $associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
+
+    foreach ($associatedProducts as $associatedProduct) {
+        $totalPrice += $associatedProduct->getFinalPrice();
+    }
+
+    echo "DEBUG MESSAGE: Total price for grouped product calculated.";
 }
+
 ?>
 <div class="price-box">
-    <?php if ($minProduct && \Magento\Framework\Pricing\Render::ZONE_ITEM_VIEW != $block->getZone()) : ?>
+    <?php if ($totalPrice > 0) : ?>
     <p class="minimal-price">
-        <span class="price-label"><?= $block->escapeHtml(__('Starting at')) ?></span><?= $amountRender->toHtml() ?>
+        <span class="price-label"><?= $block->escapeHtml(__('Total Price')) ?></span>
+        <span class="price"><?= $block->escapeHtml(
+            $block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class)
+                ->currency($totalPrice, true, false)
+        ); ?></span>
     </p>
-    <?php else: ?>
-        <?php echo "DEBUG MESSAGE: Price not rendered"; ?>
+    <?php else : ?>
+        <?php echo "DEBUG MESSAGE: No price calculated."; ?>
     <?php endif ?>
 </div>
