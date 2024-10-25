@@ -1,15 +1,19 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-/**
  * Template for displaying grouped product price
  */
 
 // Инициализируем объектный менеджер
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+// Проверим наличие переменной $item, которая может содержать продукт (как в коллекции категории)
+$productFromItem = isset($item) ? $item : null;
+
+// Отладка переменной $item
+echo "<h3>Product from \$item (category or search loop):</h3>";
+echo "<pre>";
+print_r($productFromItem);
+echo "</pre>";
 
 // Попробуем получить продукт через блок
 $productFromBlock = null;
@@ -42,7 +46,7 @@ print_r($productFromRegistryAlternative);
 echo "</pre>";
 
 // Сравниваем и используем первый доступный продукт
-$product = $productFromBlock ?? $productFromRegistry ?? $productFromRegistryAlternative;
+$product = $productFromItem ?? $productFromBlock ?? $productFromRegistry ?? $productFromRegistryAlternative;
 
 // Проверка найденного продукта
 if ($product) {
