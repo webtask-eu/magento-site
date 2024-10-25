@@ -26,8 +26,24 @@ if ($minProduct) {
 ?>
 <div class="price-box">
     <?php if ($minProduct && \Magento\Framework\Pricing\Render::ZONE_ITEM_VIEW != $block->getZone()) : ?>
-    <p class="minimal-price">
-        <span class="price-label"><?= $block->escapeHtml(__('2 Starting at')) ?></span><?= $amountRender->toHtml() ?>
-    </p>
+        <p class="minimal-price">
+    <?php if ($_product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE): ?>
+        <?php
+        // Получаем связанные продукты
+        $_associatedProducts = $_product->getTypeInstance()->getAssociatedProducts($_product);
+        $totalPrice = 0;
+
+        // Рассчитываем итоговую цену для всех продуктов
+        foreach ($_associatedProducts as $_item) {
+            $totalPrice += $_item->getFinalPrice();
+        }
+        ?>
+        <?php if ($totalPrice > 0): ?>
+            <span class="price-label"><?php echo __('Total Price:'); ?></span>
+            <span class="price"><?php echo $block->escapeHtml($block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class)->currency($totalPrice, true, false)); ?></span>
+        <?php endif; ?>
+    <?php endif; ?>
+</p>
+
     <?php endif ?>
 </div>
