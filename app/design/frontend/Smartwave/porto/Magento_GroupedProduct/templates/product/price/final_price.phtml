@@ -8,48 +8,58 @@
  * Template for displaying grouped product price
  */
 ?>
-<?php
-$minProduct = $block->getSaleableItem()
-    ->getPriceInfo()
-    ->getPrice(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE)
-    ->getMinProduct();
 
-if ($minProduct) {
-    $amountRender = $block->getRendererPool()
-        ->createAmountRender(
-            $minProduct->getPriceInfo()->getPrice('final_price')->getAmount(),
-            $minProduct,
-            $minProduct->getPriceInfo()->getPrice('final_price'),
-            ['include_container' => true]
-        );
-}
-?>
 <?php
+// Получаем объект менеджера и текущий продукт
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+
+// Выводим отладочную информацию о текущем продукте
+echo "<pre>";
+print_r($product); // Отладка для отображения информации о текущем продукте
+echo "</pre>";
 ?>
 
 <div class="price-box">
     <?php if ($product && $product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE): ?>
         <?php
+        // Выводим сообщение об успешной проверке типа продукта
+        echo "<p>Product is a grouped product.</p>";
+
         // Получаем связанные продукты
         $_associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
+
+        // Выводим информацию о связанных продуктах
+        echo "<pre>";
+        print_r($_associatedProducts); // Отладка для отображения связанных продуктов
+        echo "</pre>";
+
         $totalPrice = 0;
 
         // Рассчитываем итоговую цену всех продуктов
         foreach ($_associatedProducts as $_item) {
+            // Отладка для отображения цены каждого связанного продукта
+            echo "<p>Associated product final price: " . $_item->getFinalPrice() . "</p>";
             $totalPrice += $_item->getFinalPrice();
         }
+
+        // Выводим отладочную информацию о вычисленной итоговой цене
+        echo "<p>Total price of grouped product: " . $totalPrice . "</p>";
         ?>
-        
+
         <?php if ($totalPrice > 0): ?>
             <p class="minimal-price">
                 <span class="price-label"><?php echo __('Total Price:'); ?></span>
                 <span class="price"><?php echo $block->escapeHtml(
-                    $block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class)
+                    $objectManager->get(\Magento\Framework\Pricing\Helper\Data::class)
                         ->currency($totalPrice, true, false)
                 ); ?></span>
             </p>
         <?php endif; ?>
+    <?php else: ?>
+        <?php
+        // Если продукт не является группированным, выводим сообщение
+        echo "<p>Product is not a grouped product or product is null.</p>";
+        ?>
     <?php endif; ?>
 </div>
