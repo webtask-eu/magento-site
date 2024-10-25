@@ -7,59 +7,64 @@
 /**
  * Template for displaying grouped product price
  */
-?>
 
-<?php
-// Получаем объект менеджера и текущий продукт
+// Инициализируем объектный менеджер
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
 
-// Выводим отладочную информацию о текущем продукте
+// Попробуем получить продукт через блок
+$productFromBlock = null;
+if (method_exists($block, 'getProduct')) {
+    $productFromBlock = $block->getProduct();
+}
+
+// Попробуем получить продукт через реестр
+$productFromRegistry = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+
+// Попробуем получить продукт через альтернативный ключ в реестре
+$productFromRegistryAlternative = $objectManager->get('Magento\Framework\Registry')->registry('product');
+
+// Выводим отладочную информацию
+echo "<h2>Debugging Product Retrieval Methods</h2>";
+
+echo "<h3>Product from Block (if available):</h3>";
 echo "<pre>";
-print_r($product); // Отладка для отображения информации о текущем продукте
+print_r($productFromBlock);
 echo "</pre>";
-?>
 
-<div class="price-box">
-    <?php if ($product && $product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE): ?>
-        <?php
-        // Выводим сообщение об успешной проверке типа продукта
+echo "<h3>Product from Registry (current_product):</h3>";
+echo "<pre>";
+print_r($productFromRegistry);
+echo "</pre>";
+
+echo "<h3>Product from Registry (product):</h3>";
+echo "<pre>";
+print_r($productFromRegistryAlternative);
+echo "</pre>";
+
+// Сравниваем и используем первый доступный продукт
+$product = $productFromBlock ?? $productFromRegistry ?? $productFromRegistryAlternative;
+
+// Проверка найденного продукта
+if ($product) {
+    echo "<p>Product is available, Type ID: " . $product->getTypeId() . "</p>";
+    if ($product->getTypeId() == \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE) {
         echo "<p>Product is a grouped product.</p>";
-
+        
         // Получаем связанные продукты
         $_associatedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
-
-        // Выводим информацию о связанных продуктах
-        echo "<pre>";
-        print_r($_associatedProducts); // Отладка для отображения связанных продуктов
-        echo "</pre>";
-
         $totalPrice = 0;
 
         // Рассчитываем итоговую цену всех продуктов
         foreach ($_associatedProducts as $_item) {
-            // Отладка для отображения цены каждого связанного продукта
             echo "<p>Associated product final price: " . $_item->getFinalPrice() . "</p>";
             $totalPrice += $_item->getFinalPrice();
         }
 
-        // Выводим отладочную информацию о вычисленной итоговой цене
         echo "<p>Total price of grouped product: " . $totalPrice . "</p>";
-        ?>
-
-        <?php if ($totalPrice > 0): ?>
-            <p class="minimal-price">
-                <span class="price-label"><?php echo __('Total Price:'); ?></span>
-                <span class="price"><?php echo $block->escapeHtml(
-                    $objectManager->get(\Magento\Framework\Pricing\Helper\Data::class)
-                        ->currency($totalPrice, true, false)
-                ); ?></span>
-            </p>
-        <?php endif; ?>
-    <?php else: ?>
-        <?php
-        // Если продукт не является группированным, выводим сообщение
-        echo "<p>Product is not a grouped product or product is null.</p>";
-        ?>
-    <?php endif; ?>
-</div>
+    } else {
+        echo "<p>Product is not a grouped product.</p>";
+    }
+} else {
+    echo "<p>No product found using any method.</p>";
+}
+?>
