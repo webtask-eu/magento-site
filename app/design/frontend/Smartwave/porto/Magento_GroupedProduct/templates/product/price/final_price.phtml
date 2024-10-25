@@ -52,8 +52,7 @@ if ($product) {
         <p class="minimal-price">
             <span class="price-label"><?= $block->escapeHtml(__('Total Price')) ?></span>
             <span class="price"><?= $block->escapeHtml(
-                $block->getLayout()->createBlock(\Magento\Framework\Pricing\Helper\Data::class)
-                    ->currency($totalPrice, true, false)
+                $this->priceHelper->currency($totalPrice, true, false)
             ); ?></span>
         </p>
     <?php else: ?>
