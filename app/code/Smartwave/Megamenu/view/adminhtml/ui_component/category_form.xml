@@ -88,7 +88,7 @@
                 </item>
             </argument>
             <settings>
-                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
                 <dataType>string</dataType>
                 <label translate="true">Icon Image</label>
                 <visible>true</visible>
@@ -220,7 +220,7 @@
                 </item>
             </argument>
             <settings>
-                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
                 <dataType>string</dataType>
                 <label translate="true">Icon Image</label>
                 <visible>true</visible>
