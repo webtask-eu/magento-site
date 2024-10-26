@@ -21,7 +21,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '07ec02c7e667fdcb3e30c02cc772b743' => __DIR__ . '/..' . '/magento/framework/registration.php',
@@ -432,10 +431,7 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         '6b5b87bda6fedcf6ef8605219c8b67f2' => __DIR__ . '/..' . '/mageplaza/module-core/registration.php',
         'aa75ea0761a2f40c1f3b32ad314f86c4' => __DIR__ . '/..' . '/phpseclib/mcrypt_compat/lib/mcrypt.php',
         '38143a9afc50997d55e4815db8489d1c' => __DIR__ . '/..' . '/rector/rector/bootstrap.php',
-        '6afbb3ece6b14bcedd88522ddc6978f5' => __DIR__ . '/..' . '/stripe/module-payments/registration.php',
-        '3503b1942c9d7e4fd295ac62fa632554' => __DIR__ . '/..' . '/ultraplugin/module-base/registration.php',
         '940abd8fb01ee76a36b44f35dcf9783b' => __DIR__ . '/..' . '/weew/helpers-array/src/array.php',
-        '6edb87d806517c8346b8ef7fa5587111' => __DIR__ . '/..' . '/hexamarvel/module-blog/registration.php',
         '21e1f66f21c1487486dda2a7c9174cf0' => __DIR__ . '/..' . '/magefan/module-blog/registration.php',
         'eda65932675b68b5aee4503e0762d64d' => __DIR__ . '/..' . '/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/_bootstrap.php',
         'efb1c0737b9e14915954f7954ea42462' => __DIR__ . '/..' . '/magento/module-bundle-sample-data/registration.php',
@@ -453,8 +449,7 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         'f3d4617c4b29f1082289d89745685dad' => __DIR__ . '/..' . '/magento/module-widget-sample-data/registration.php',
         '759d958743dba8d926c9111b82afe3e9' => __DIR__ . '/..' . '/magento/module-wishlist-sample-data/registration.php',
         'a77049f7f3ca4c78b9e3635c8f857d84' => __DIR__ . '/..' . '/mageplaza/module-smtp/registration.php',
-        'd3949bc863c3f18a604945b1ac664872' => __DIR__ . '/..' . '/ultraplugin/module-paymentfee/registration.php',
-        'fee7b84235d4e3c00ebb68d556704da0' => __DIR__ . '/..' . '/webshopapps/module-matrixrate/registration.php',
+        '5b29f2c69f54a19d37a4958cb6a83038' => __DIR__ . '/..' . '/webshopapps/module-matrixrate/src/registration.php',
         'b4cf39431a4b949eea8aa69ebb3d39da' => __DIR__ . '/../..' . '/app/etc/NonComposerComponentRegistration.php',
     );
 
@@ -481,18 +476,12 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         array (
             'Vault\\' => 6,
         ),
-        'U' => 
-        array (
-            'Ultraplugin\\Paymentfee\\' => 23,
-            'Ultraplugin\\Base\\' => 17,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
-            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
@@ -523,8 +512,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
             'Symfony\\Bridge\\ProxyManager\\' => 28,
-            'Stripe\\' => 7,
-            'StripeIntegration\\Payments\\' => 27,
             'SpomkyLabs\\Pki\\' => 15,
             'Seld\\Signal\\' => 12,
             'Seld\\PharUtils\\' => 15,
@@ -1036,10 +1023,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
             'Jose\\' => 5,
             'JmesPath\\' => 9,
         ),
-        'H' => 
-        array (
-            'Hexamarvel\\Blog\\' => 16,
-        ),
         'G' => 
         array (
             'GuzzleHttp\\Stream\\' => 18,
@@ -1125,19 +1108,11 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         ),
         'WebShopApps\\MatrixRate\\' => 
         array (
-            0 => __DIR__ . '/..' . '/webshopapps/module-matrixrate',
+            0 => __DIR__ . '/..' . '/webshopapps/module-matrixrate/src',
         ),
         'Vault\\' => 
         array (
             0 => __DIR__ . '/..' . '/csharpru/vault-php/src',
-        ),
-        'Ultraplugin\\Paymentfee\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/ultraplugin/module-paymentfee',
-        ),
-        'Ultraplugin\\Base\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/ultraplugin/module-base',
         ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
@@ -1154,10 +1129,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         'Symfony\\Polyfill\\Php73\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
-        ),
-        'Symfony\\Polyfill\\Php72\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -1278,14 +1249,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         'Symfony\\Bridge\\ProxyManager\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/proxy-manager-bridge',
-        ),
-        'Stripe\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
-        ),
-        'StripeIntegration\\Payments\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stripe/module-payments',
         ),
         'SpomkyLabs\\Pki\\' => 
         array (
@@ -3243,10 +3206,6 @@ class ComposerStaticInit73becc2bc952e7eb678882767a50f912
         'JmesPath\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
-        ),
-        'Hexamarvel\\Blog\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/hexamarvel/module-blog',
         ),
         'GuzzleHttp\\Stream\\' => 
         array (

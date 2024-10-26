@@ -167,22 +167,4 @@ class ProductExtension extends \Magento\Framework\Api\AbstractSimpleObject imple
         $this->setData('discounts', $discounts);
         return $this;
     }
-
-    /**
-     * @return \StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface|null
-     */
-    public function getSubscriptionOptions()
-    {
-        return $this->_get('subscription_options');
-    }
-
-    /**
-     * @param \StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface $subscriptionOptions
-     * @return $this
-     */
-    public function setSubscriptionOptions(\StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface $subscriptionOptions)
-    {
-        $this->setData('subscription_options', $subscriptionOptions);
-        return $this;
-    }
 }

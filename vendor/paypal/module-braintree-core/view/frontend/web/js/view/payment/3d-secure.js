@@ -61,9 +61,11 @@ define([
         checkBillingLineLengths: function (errorMessage, billingAddress, shippingAddress) {
             let lineError = null;
 
-            if (billingAddress.street[0].length > 50 || shippingAddress.street[0].length > 50) {
+            if (billingAddress.street[0].length > 50 ||
+                (shippingAddress.street !== undefined && shippingAddress.street[0].length > 50)) {
                 lineError = 'line1';
-            } else if (billingAddress.street[1].length > 50 || shippingAddress.street[1].length > 50) {
+            } else if (billingAddress.street[1].length > 50 ||
+                (shippingAddress.street !== undefined && shippingAddress.street[1].length > 50)) {
                 lineError = 'line2';
             }
 
@@ -97,11 +99,13 @@ define([
             }
 
             // Handle shipping address region code
-            if (shippingAddress.regionCode == null) {
-                shippingAddress.regionCode = undefined;
-            }
-            if (shippingAddress.regionCode !== undefined && shippingAddress.regionCode.length > 2) {
-                shippingAddress.regionCode = undefined;
+            if (!quote.isVirtual()) {
+                if (shippingAddress.regionCode == null) {
+                    shippingAddress.regionCode = undefined;
+                }
+                if (shippingAddress.regionCode !== undefined && shippingAddress.regionCode.length > 2) {
+                    shippingAddress.regionCode = undefined;
+                }
             }
 
             // No 3d secure if using CVV verification on vaulted cards
@@ -165,19 +169,6 @@ define([
                             countryCodeAlpha2: billingAddress.countryId
                         },
                         additionalInformation: {
-                            shippingGivenName: escapeNonAsciiCharacters(shippingAddress.firstname),
-                            shippingSurname: escapeNonAsciiCharacters(shippingAddress.lastname),
-                            shippingAddress: {
-                                streetAddress: shippingAddress.street[0],
-                                extendedAddress: shippingAddress.street[1],
-                                locality: shippingAddress.city,
-                                region: shippingAddress.regionCode,
-                                postalCode: shippingAddress.postcode,
-                                countryCodeAlpha2: shippingAddress.countryId
-                            },
-                            shippingPhone: shippingAddress.telephone !== null
-                                ? removeNonDigitCharacters(shippingAddress.telephone)
-                                : shippingAddress.telephone,
                             ipAddress: self.getIpAddress()
                         },
                         onLookupComplete: function (data, next) {
@@ -202,6 +193,25 @@ define([
 
                     if (context.hasOwnProperty('email') && context.email !== null) {
                         threeDSecureParameters.email = context.email;
+                    }
+
+                    if (!quote.isVirtual()) {
+                        threeDSecureParameters.additionalInformation = {
+                            shippingGivenName: escapeNonAsciiCharacters(shippingAddress.firstname),
+                            shippingSurname: escapeNonAsciiCharacters(shippingAddress.lastname),
+                            shippingAddress: {
+                                streetAddress: shippingAddress.street[0],
+                                extendedAddress: shippingAddress.street[1],
+                                locality: shippingAddress.city,
+                                region: shippingAddress.regionCode,
+                                postalCode: shippingAddress.postcode,
+                                countryCodeAlpha2: shippingAddress.countryId
+                            },
+                            shippingPhone: shippingAddress.telephone !== null
+                                ? removeNonDigitCharacters(shippingAddress.telephone)
+                                : shippingAddress.telephone,
+                            ipAddress: threeDSecureParameters.additionalInformation.ipAddress
+                        }
                     }
 
                     threeDSecureInstance.verifyCard(threeDSecureParameters, function (err, response) {

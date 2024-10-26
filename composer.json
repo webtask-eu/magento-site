@@ -18,7 +18,6 @@
     },
     "version": "2.4.6-p3",
     "require": {
-        "hexamarvel/module-blog": "^1.0",
         "magefan/module-blog": "^2.11",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "^2.0.4",
@@ -39,6 +38,7 @@
         "magento/module-swatches-sample-data": "100.4.*",
         "magento/module-tax-sample-data": "100.4.*",
         "magento/module-theme-sample-data": "100.4.*",
+        "magento/module-ui": "^101.2",
         "magento/module-widget-sample-data": "100.4.*",
         "magento/module-wishlist-sample-data": "100.4.*",
         "magento/product-community-edition": "2.4.7-p2",
@@ -46,8 +46,6 @@
         "magento/sample-data-media": "100.4.*",
         "mageplaza/module-core": "^1.5",
         "mageplaza/module-smtp": "^4.7",
-        "stripe/stripe-payments": "^3.5",
-        "ultraplugin/module-paymentfee": "^1.0",
         "webshopapps/module-matrixrate": "^20.4"
     },
     "autoload": {

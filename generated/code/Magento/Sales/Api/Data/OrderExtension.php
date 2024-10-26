@@ -203,40 +203,4 @@ class OrderExtension extends \Magento\Framework\Api\AbstractSimpleObject impleme
         $this->setData('send_notification', $sendNotification);
         return $this;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getPaymentMethodType()
-    {
-        return $this->_get('payment_method_type');
-    }
-
-    /**
-     * @param string $paymentMethodType
-     * @return $this
-     */
-    public function setPaymentMethodType($paymentMethodType)
-    {
-        $this->setData('payment_method_type', $paymentMethodType);
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPaymentMethodCardData()
-    {
-        return $this->_get('payment_method_card_data');
-    }
-
-    /**
-     * @param string $paymentMethodCardData
-     * @return $this
-     */
-    public function setPaymentMethodCardData($paymentMethodCardData)
-    {
-        $this->setData('payment_method_card_data', $paymentMethodCardData);
-        return $this;
-    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace RectorPrefix202308\Illuminate\Contracts\Validation;
+namespace RectorPrefix202410\Illuminate\Contracts\Validation;
 
 interface UncompromisedVerifier
 {

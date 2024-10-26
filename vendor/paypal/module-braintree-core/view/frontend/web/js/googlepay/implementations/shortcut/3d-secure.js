@@ -195,9 +195,11 @@ define([
         checkBillingLineLengths: function (errorMessage, billingAddress, shippingAddress) {
             let lineError = null;
 
-            if (billingAddress.street[0].length > 50 || shippingAddress.street[0].length > 50) {
+            if (billingAddress.street[0].length > 50 ||
+                (shippingAddress.street !== undefined && shippingAddress.street[0].length > 50)) {
                 lineError = 'line1';
-            } else if (billingAddress.street[1].length > 50 || shippingAddress.street[1].length > 50) {
+            } else if (billingAddress.street[1].length > 50 ||
+                (shippingAddress.street !== undefined && shippingAddress.street[1].length > 50)) {
                 lineError = 'line2';
             }
 

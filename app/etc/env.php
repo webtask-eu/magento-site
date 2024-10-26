@@ -71,7 +71,7 @@ return [
         'logPath' => '/var/www/html/var/debug/db.log'
     ],
     'x-frame-options' => 'SAMEORIGIN',
-    'MAGE_MODE' => 'production',
+    'MAGE_MODE' => 'developer',
     'session' => [
         'save' => 'redis',
         'redis' => [

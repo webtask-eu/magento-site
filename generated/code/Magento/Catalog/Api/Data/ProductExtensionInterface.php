@@ -104,15 +104,4 @@ interface ProductExtensionInterface extends \Magento\Framework\Api\ExtensionAttr
      * @return $this
      */
     public function setDiscounts($discounts);
-
-    /**
-     * @return \StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface|null
-     */
-    public function getSubscriptionOptions();
-
-    /**
-     * @param \StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface $subscriptionOptions
-     * @return $this
-     */
-    public function setSubscriptionOptions(\StripeIntegration\Payments\Api\Data\SubscriptionOptionsInterface $subscriptionOptions);
 }

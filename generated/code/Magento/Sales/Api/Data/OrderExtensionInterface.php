@@ -126,26 +126,4 @@ interface OrderExtensionInterface extends \Magento\Framework\Api\ExtensionAttrib
      * @return $this
      */
     public function setSendNotification($sendNotification);
-
-    /**
-     * @return string|null
-     */
-    public function getPaymentMethodType();
-
-    /**
-     * @param string $paymentMethodType
-     * @return $this
-     */
-    public function setPaymentMethodType($paymentMethodType);
-
-    /**
-     * @return string|null
-     */
-    public function getPaymentMethodCardData();
-
-    /**
-     * @param string $paymentMethodCardData
-     * @return $this
-     */
-    public function setPaymentMethodCardData($paymentMethodCardData);
 }
