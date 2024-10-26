@@ -1,0 +1,16 @@
+<!-- Custom Image Uploader Template -->
+<div class="admin__field">
+    <div class="admin__field-control">
+        <input type="file" data-bind="attr: { accept: 'image/*' }, css: { 'required-entry': required }" />
+        <div class="image-preview" data-bind="visible: preview">
+            <img data-bind="attr: { src: preview }, css: 'preview-image'" alt="Preview" />
+        </div>
+        <button type="button" class="action-remove" data-bind="click: remove, visible: preview">
+            <span>Remove</span>
+        </button>
+    </div>
+    <div class="image-error" data-bind="visible: error">
+        <span data-bind="text: error"></span>
+    </div>
+</div>
+
