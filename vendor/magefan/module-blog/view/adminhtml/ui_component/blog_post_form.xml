@@ -227,7 +227,7 @@
                 </item>
             </argument>
             <settings>
-                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
                 <dataType>string</dataType>
                 <label translate="true">Media Gallery</label>
                 <visible>true</visible>
@@ -579,7 +579,7 @@
                 </item>
             </argument>
             <settings>
-                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
                 <dataType>string</dataType>
                 <label translate="true">OG Image</label>
                 <visible>true</visible>
