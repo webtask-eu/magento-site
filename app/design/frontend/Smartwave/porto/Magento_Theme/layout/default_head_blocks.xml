@@ -15,6 +15,7 @@
         <css src="simple-line-icons/css/simple-line-icons.css" />
         <css src="icon-fonts/css/animation.css" /> 
         <css src="font-awesome/css/font-awesome.min.css" />
+        <css src="css/yuriy_custom.css" />
         <!-- <script src="jquery.js" />
         <script src="jquery-ui.js" />
         <script src="fancybox/js/jquery.fancybox.js" /> -->
