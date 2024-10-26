@@ -147,7 +147,7 @@
     <multiline class="Magento\Ui\Component\Form\Element\Multiline" component="Magento_Ui/js/form/components/multiline"/>
     <range class="Magento\Ui\Component\Form\Element\Range" component="Magento_Ui/js/grid/filters/range"/>
     <fileUploader class="Magento\Ui\Component\Form\Element\DataType\Media" component="Magento_Ui/js/form/element/file-uploader" template="ui/form/element/uploader/uploader"/>
-    <imageUploader class="Magento\Ui\Component\Form\Element\DataType\Media\Image" component="Magento_Ui/js/form/element/image-uploader" template="ui/form/element/image-uploader">
+    <imageUploader class="Magento\Ui\Component\Form\Element\DataType\Media\Image" component="Magento_Ui/js/form/element/image-uploader" template="ui/form/element/uploader/image">
         <settings>
             <initialMediaGalleryOpenSubpath>wysiwyg</initialMediaGalleryOpenSubpath>
         </settings>

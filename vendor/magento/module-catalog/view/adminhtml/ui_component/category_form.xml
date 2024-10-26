@@ -165,7 +165,7 @@
                 </item>
             </argument>
             <settings>
-                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
                 <dataType>string</dataType>
                 <label translate="true">Category Image</label>
                 <visible>true</visible>
