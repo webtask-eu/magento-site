@@ -52,87 +52,122 @@ define([
          * @param {HTMLInputElement} fileInput
          * @returns {FileUploader} Chainable.
          */
-initUploader: function (fileInput) {
-    console.log("Initializing uploader. Element state in initUploader:", this.element);
-    console.log("File input inside initUploader:", fileInput);
+        initUploader: function (fileInput) {
+            _.extend(this.uploaderConfig, {
+                dropZone: $(fileInput).closest(this.dropZone),
+                change: this.onFilesChoosed.bind(this),
+                drop: this.onFilesChoosed.bind(this),
+                add: this.onBeforeFileUpload.bind(this),
+                fail: this.onFail.bind(this),
+                done: this.onFileUploaded.bind(this),
+                start: this.onLoadingStart.bind(this),
+                stop: this.onLoadingStop.bind(this)
+            });
 
-    // Преобразование this.element в jQuery объект и проверка
-    if (this.element) {
-        this.element = jQuery(this.element); // Обертка в jQuery объект
-        console.log("this.element после обертки в jQuery:", this.element);
+            // uppy implementation
+            if (fileInput !== undefined) {
+                let targetElement = $(fileInput).closest('.file-uploader-area')[0],
+                    dropTargetElement = $(fileInput).closest(this.dropZone)[0],
+                    formKey = window.FORM_KEY !== undefined ? window.FORM_KEY : $.cookie('form_key'),
+                    fileInputName = this.fileInputName,
+                    arrayFromObj = Array.from,
+                    options = {
+                        proudlyDisplayPoweredByUppy: false,
+                        target: targetElement,
+                        hideUploadButton: true,
+                        hideRetryButton: true,
+                        hideCancelButton: true,
+                        inline: true,
+                        showRemoveButtonAfterComplete: true,
+                        showProgressDetails: false,
+                        showSelectedFiles: false,
+                        allowMultipleUploads: false,
+                        hideProgressAfterFinish: true
+                    };
 
-        // Проверка: является ли элемент jQuery объектом
-        if (this.element instanceof jQuery) {
-            console.log("this.element является jQuery объектом:", this.element);
-        } else {
-            console.warn("Warning: this.element не является jQuery объектом после обертки");
-        }
-    } else {
-        console.warn("Warning: this.element undefined в initUploader");
-    }
+                if (fileInputName === undefined) {
+                    fileInputName = $(fileInput).attr('name');
+                }
+                // handle input type file
+                this.replaceInputTypeFile(fileInput);
 
-    // Пробуем вызвать this.element.data с проверкой
-    try {
-        let maxFileSize = this.element.data('maxFileSize');
-        console.log("Максимальный размер файла:", maxFileSize);
-    } catch (error) {
-        console.error("Ошибка при вызове this.element.data:", error);
-    }
+                const uppy = new Uppy.Uppy({
+                    autoProceed: true,
 
-    // Конфигурация загрузчика
-    _.extend(this.uploaderConfig, {
-        dropZone: $(fileInput).closest(this.dropZone),
-        change: this.onFilesChoosed.bind(this),
-        drop: this.onFilesChoosed.bind(this),
-        add: this.onBeforeFileUpload.bind(this),
-        fail: this.onFail.bind(this),
-        done: this.onFileUploaded.bind(this),
-        start: this.onLoadingStart.bind(this),
-        stop: this.onLoadingStop.bind(this)
-    });
+                    onBeforeFileAdded: (currentFile) => {
+                        let file = currentFile,
+                            allowed = this.isFileAllowed(file);
 
-    console.log("Uploader configuration после расширения:", this.uploaderConfig);
+                        if (this.disabled()) {
+                            this.notifyError($t('The file upload field is disabled.'));
+                            return false;
+                        }
 
-    // Попытка инициализации Uppy
-    try {
-        console.log("Начало настройки Uppy...");
-        const uppy = new Uppy.Uppy({
-            restrictions: {
-                allowedFileTypes: ['.gif', '.jpeg', '.JPG', '.JPEG', '.jpg', '.png'],
-                maxFileSize: this.element.data('maxFileSize')
-            },
-            autoProceed: true,
-        });
+                        if (!allowed.passed)  {
+                            this.aggregateError(file.name, allowed.message);
+                            this.uploaderConfig.stop();
+                            return false;
+                        }
 
-        uppy.use(Uppy.Dashboard, {
-            proudlyDisplayPoweredByUppy: false,
-            target: $(fileInput).closest('.file-uploader-area')[0],
-            inline: true,
-            showRemoveButtonAfterComplete: true
-        });
+                        // code to allow duplicate files from same folder
+                        const modifiedFile = {
+                            ...currentFile,
+                            id:  currentFile.id + '-' + Date.now()
+                        };
 
-        uppy.use(Uppy.XHRUpload, {
-            endpoint: this.uploaderConfig.url,
-            fieldName: $(fileInput).attr('name')
-        });
+                        this.onLoadingStart();
+                        return modifiedFile;
+                    },
 
-        uppy.on('upload-success', (file, response) => {
-            let data = { files: [response.body], result: response.body };
-            this.onFileUploaded('', data);
-        });
+                    meta: {
+                        'form_key': formKey,
+                        'param_name': fileInputName,
+                        isAjax : true
+                    }
+                });
 
-        uppy.on('complete', () => {
-            this.onLoadingStop();
-        });
-    } catch (error) {
-        console.error("Ошибка при инициализации Uppy:", error);
-    }
+                // initialize Uppy upload
+                uppy.use(Uppy.Dashboard, options);
 
-    return this;
-}
+                // drop area for file upload
+                uppy.use(Uppy.DropTarget, {
+                    target: dropTargetElement,
+                    onDragOver: () => {
+                        // override Array.from method of legacy-build.min.js file
+                        Array.from = null;
+                    },
+                    onDragLeave: () => {
+                        Array.from = arrayFromObj;
+                    }
+                });
 
+                // upload files on server
+                uppy.use(Uppy.XHRUpload, {
+                    endpoint: this.uploaderConfig.url,
+                    fieldName: fileInputName
+                });
 
-,
+                uppy.on('upload-success', (file, response) => {
+                    let data = {
+                        files : [response.body],
+                        result : response.body
+                    };
+
+                    this.onFileUploaded('', data);
+                });
+
+                uppy.on('upload-error', (file, error) => {
+                    console.error(error.message);
+                    console.error(error.status);
+                });
+
+                uppy.on('complete', () => {
+                    this.onLoadingStop();
+                    Array.from = arrayFromObj;
+                });
+            }
+            return this;
+        },
 
         /**
          * Replace Input type File with Span
@@ -349,7 +384,6 @@ initUploader: function (fileInput) {
          * @returns {Boolean}
          */
         isExtensionAllowed: function (file) {
-            let extension = file.name.split('.').pop().toLowerCase(); // Приводим к нижнему регистру
             return validator('validate-file-type', file.name, this.allowedExtensions);
         },
 
@@ -573,22 +607,10 @@ initUploader: function (fileInput) {
          *
          * @param {HTMLInputElement} fileInput
          */
-	onElementRender: function (fileInput) {
-	// Принудительно устанавливаем элемент вручную
-	this.element = fileInput;
-	console.log("Manually setting this.element in onElementRender:", this.element);
+        onElementRender: function (fileInput) {
+            this.initUploader(fileInput);
+        },
 
-	// Проверка на наличие параметров
-	console.log("File input received:", fileInput);
-	console.log("Current uploader configuration:", this.uploaderConfig);
-
-	try {
-	this.initUploader(fileInput);
-	} catch (error) {
-	console.error("Error in initUploader:", error);
-	}
-	},
-		
         /**
          * Handler of the preview image load event.
          *
