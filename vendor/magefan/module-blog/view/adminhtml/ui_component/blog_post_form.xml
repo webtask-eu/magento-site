@@ -579,7 +579,11 @@
                 </item>
             </argument>
             <settings>
+<<<<<<< HEAD
                 <elementTmpl>ui/form/element/uploader/image-uploader</elementTmpl>
+=======
+                <elementTmpl>ui/form/element/image-uploader</elementTmpl>
+>>>>>>> d427e22ca414ca118c2a789ab1494f2365aa8a1c
                 <dataType>string</dataType>
                 <label translate="true">OG Image</label>
                 <visible>true</visible>
