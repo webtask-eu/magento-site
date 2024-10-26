@@ -22,7 +22,7 @@
                     <settings>
                         <notice translate="true">Allowed file types: jpeg, gif, png.</notice>
                         <label translate="true">Image</label>
-                        <componentType>imageUploader</componentType>
+                        <componentType>field</componentType>
                     </settings>
                     <formElements>
                         <imageUploader>
